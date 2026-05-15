@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Mateus Ataide" },
+      { name: "description", content: "Mateus Ataide's portfolio showcases a software engineer's experience, projects, and skills." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Mateus Ataide" },
+      { property: "og:description", content: "Mateus Ataide's portfolio showcases a software engineer's experience, projects, and skills." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Mateus Ataide" },
+      { name: "twitter:description", content: "Mateus Ataide's portfolio showcases a software engineer's experience, projects, and skills." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fe4d7763-1427-4a40-a7c5-7b15a39bca4c/id-preview-15f11ad0--7eff01eb-51d8-4d6f-a022-189b392776f5.lovable.app-1778870670278.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fe4d7763-1427-4a40-a7c5-7b15a39bca4c/id-preview-15f11ad0--7eff01eb-51d8-4d6f-a022-189b392776f5.lovable.app-1778870670278.png" },
     ],
     links: [
       {
