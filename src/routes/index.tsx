@@ -187,42 +187,43 @@ function Portfolio() {
           <Bullets items={t.experience} />
         </Section>
 
-        <section id="projects" className="border-t border-border py-5">
-          <div className="font-semibold">{t.sections.projects}</div>
-          <ul className="mt-5 space-y-6">
-            {t.projects.map((p, i) => (
-              <li key={i} className="relative pl-6">
-                <span
-                  className="absolute left-0 top-[0.45rem] h-2 w-2 rounded-full"
-                  style={{ backgroundColor: "var(--dot)" }}
-                />
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4">
-                  <span className="font-semibold">{p.name}</span>
-                  <span className="text-sm text-muted-foreground">{p.period}</span>
-                </div>
-                <p className="mt-1 text-[0.95rem] text-foreground/85">{p.desc}</p>
-                {p.media?.type === "image" && (
-                  <img
-                    src={p.media.src}
-                    alt={p.media.alt ?? p.name}
-                    loading="lazy"
-                    className="mt-3 w-full rounded-md border border-border"
+        <div id="projects">
+          <Section title={t.sections.projects}>
+            <ul className="space-y-6">
+              {t.projects.map((p, i) => (
+                <li key={i} className="relative pl-6">
+                  <span
+                    className="absolute left-0 top-[0.45rem] h-2 w-2 rounded-full"
+                    style={{ backgroundColor: "var(--dot)" }}
                   />
-                )}
-                {p.media?.type === "video" && (
-                  <video
-                    src={p.media.src}
-                    poster={p.media.poster}
-                    controls
-                    playsInline
-                    preload="metadata"
-                    className="mt-3 w-full rounded-md border border-border"
-                  />
-                )}
-              </li>
-            ))}
-          </ul>
-        </section>
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+                    <span className="font-semibold">{p.name}</span>
+                    <span className="text-sm text-muted-foreground">{p.period}</span>
+                  </div>
+                  <p className="mt-1 text-[0.95rem] text-foreground/85">{p.desc}</p>
+                  {p.media?.type === "image" && (
+                    <img
+                      src={p.media.src}
+                      alt={p.media.alt ?? p.name}
+                      loading="lazy"
+                      className="mt-3 w-full rounded-md border border-border"
+                    />
+                  )}
+                  {p.media?.type === "video" && (
+                    <video
+                      src={p.media.src}
+                      poster={p.media.poster}
+                      controls
+                      playsInline
+                      preload="metadata"
+                      className="mt-3 w-full rounded-md border border-border"
+                    />
+                  )}
+                </li>
+              ))}
+            </ul>
+          </Section>
+        </div>
 
         <Section title={t.sections.education}>
           <Bullets items={t.education} />
