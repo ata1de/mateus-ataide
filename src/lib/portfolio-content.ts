@@ -18,7 +18,7 @@ export const content = {
     location: "🇧🇷 recife, pernambuco, brasil",
     role: "software engineer & team lead @ amigo tech | information systems @ ufpe (cin)",
     bio: [
-      "backend engineer with 3+ years of experience building high-reliability fintech systems processing R$60M+/month. focused on golang, node.js/typescript and python, with growing expertise in applied ai — llms, rag and ai agents in production.",
+      "software engineer with 3+ years of experience building high-reliability fintech systems processing R$60M+/month. focused on golang, node.js/typescript and python on the backend, react, angular and react native on the frontend/mobile, and aws on the cloud — with growing expertise in applied ai (llms, rag and ai agents in production).",
       "currently leading a fintech squad at amigo tech and studying information systems at ufpe, one of brazil's top cs schools.",
       "really interested in meeting new people and learning about their experiences. reach out if you want to chat!",
     ],
@@ -124,7 +124,7 @@ export const content = {
     location: "🇧🇷 recife, pernambuco, brasil",
     role: "engenheiro de software & team lead @ amigo tech | sistemas de informação @ ufpe (cin)",
     bio: [
-      "engenheiro de backend com 3+ anos de experiência construindo sistemas fintech de alta confiabilidade que processam R$60M+/mês. focado em golang, node.js/typescript e python, com expertise crescente em ia aplicada — llms, rag e agentes de ia em produção.",
+      "engenheiro de software com 3+ anos de experiência construindo sistemas fintech de alta confiabilidade que processam R$60M+/mês. focado em golang, node.js/typescript e python no backend, react, angular e react native no frontend/mobile, e aws na cloud — com expertise crescente em ia aplicada (llms, rag e agentes de ia em produção).",
       "atualmente liderando uma squad fintech na amigo tech e estudando sistemas de informação na ufpe, uma das melhores escolas de cs do brasil.",
       "tenho muito interesse em conhecer pessoas novas e aprender sobre suas experiências. me chama se quiser conversar!",
     ],
