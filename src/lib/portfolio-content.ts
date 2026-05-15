@@ -1,9 +1,20 @@
 export type Lang = "en" | "pt";
 
+export type ProjectMedia =
+  | { type: "image"; src: string; alt?: string }
+  | { type: "video"; src: string; poster?: string };
+
+export type Project = {
+  name: string;
+  period: string;
+  desc: string;
+  media?: ProjectMedia;
+};
+
 export const content = {
   en: {
     nav: { about: "about", projects: "projects" },
-    name: "mateus ataide",
+    name: "Mateus Ataide",
     location: "🇧🇷 recife, pernambuco, brasil",
     role: "software engineer & tech lead @ amigo tech | information systems @ ufpe (cin)",
     bio: [
@@ -51,14 +62,6 @@ export const content = {
           "reduced critical postgresql query latency from 13s to ~350ms via index redesign",
         ],
       },
-      {
-        title: "ufpe — teaching assistant",
-        period: "2023 – present",
-        bullets: [
-          "algorithms & data structures and programming logic",
-          "helped students with problem solving, complexity analysis and computational thinking",
-        ],
-      },
     ],
     projects: [
       {
@@ -72,11 +75,21 @@ export const content = {
         desc: "ai-powered digital campaign automation platform. built with fastapi + llms and react + vite. features: ai agent orchestration for creative generation, social media scraping pipeline with nlp sentiment analysis for market signal classification by ticker, mongodb for raw data storage. integrated with google ads and meta.",
       },
       {
+        name: "rekon",
+        period: "2024",
+        desc: "real-time tracking and analytics platform to monitor assets and events, with operational visibility and live insights.",
+      },
+      {
+        name: "reembolso ai",
+        period: "2024",
+        desc: "ai-powered expense management system: receipt parsing, approval flows and real-time financial insights for better control and faster reimbursements.",
+      },
+      {
         name: "contract automation api",
         period: "2024",
         desc: "go backend for contract generation automation. applied idiomatic concurrency patterns with goroutines and channels. containerized with docker for environment parity.",
       },
-    ],
+    ] as Project[],
     education: [
       {
         title: "ufpe — centro de informática (cin), information systems",
@@ -84,6 +97,14 @@ export const content = {
         bullets: [
           "one of the top cs teaching and research centers in brazil and latin america.",
           "key subjects: algorithms, data structures, operating systems, oop, software engineering, systems architecture, ai, databases.",
+        ],
+      },
+      {
+        title: "ufpe — teaching assistant",
+        period: "2023 – present",
+        bullets: [
+          "algorithms & data structures and programming logic",
+          "helped students with problem solving, complexity analysis and computational thinking",
         ],
       },
     ],
@@ -99,7 +120,7 @@ export const content = {
   },
   pt: {
     nav: { about: "sobre", projects: "projetos" },
-    name: "mateus ataide",
+    name: "Mateus Ataide",
     location: "🇧🇷 recife, pernambuco, brasil",
     role: "engenheiro de software & tech lead @ amigo tech | sistemas de informação @ ufpe (cin)",
     bio: [
@@ -147,14 +168,6 @@ export const content = {
           "reduzi latência crítica de query postgresql de 13s para ~350ms via redesign de índices",
         ],
       },
-      {
-        title: "ufpe — monitor",
-        period: "2023 – atual",
-        bullets: [
-          "algoritmos & estruturas de dados e lógica de programação",
-          "ajudei estudantes com resolução de problemas, análise de complexidade e pensamento computacional",
-        ],
-      },
     ],
     projects: [
       {
@@ -168,11 +181,21 @@ export const content = {
         desc: "plataforma de automação de campanhas digitais com ia. construída com fastapi + llms e react + vite. features: orquestração de agentes de ia para geração de criativos, pipeline de scraping de redes sociais com análise de sentimento via nlp para classificação de sinais de mercado por ticker, mongodb para armazenamento bruto. integrado com google ads e meta.",
       },
       {
+        name: "rekon",
+        period: "2024",
+        desc: "criei uma plataforma de rastreamento e analytics em tempo real para monitorar ativos e eventos, com visibilidade operacional e insights ao vivo.",
+      },
+      {
+        name: "reembolso ai",
+        period: "2024",
+        desc: "criei um sistema de gestão de despesas com ia: parsing de recibos, fluxos de aprovação e insights financeiros em tempo real para melhor controle e reembolsos mais rápidos.",
+      },
+      {
         name: "contract automation api",
         period: "2024",
         desc: "backend em go para automação de geração de contratos. apliquei padrões idiomáticos de concorrência com goroutines e channels. containerizado com docker para paridade entre ambientes.",
       },
-    ],
+    ] as Project[],
     education: [
       {
         title: "ufpe — centro de informática (cin), sistemas de informação",
@@ -180,6 +203,14 @@ export const content = {
         bullets: [
           "um dos principais centros de ensino e pesquisa em cs do brasil e da américa latina.",
           "matérias-chave: algoritmos, estruturas de dados, sistemas operacionais, poo, engenharia de software, arquitetura de sistemas, ia, bancos de dados.",
+        ],
+      },
+      {
+        title: "ufpe — monitor (teaching assistant)",
+        period: "2023 – atual",
+        bullets: [
+          "algoritmos & estruturas de dados e lógica de programação",
+          "ajudei estudantes com resolução de problemas, análise de complexidade e pensamento computacional",
         ],
       },
     ],
