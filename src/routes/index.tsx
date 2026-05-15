@@ -168,8 +168,9 @@ function Portfolio() {
       </section>
 
       <div className="mt-10">
-        <Section title={t.sections.metrics} defaultOpen>
-          <ul className="space-y-1.5 text-[0.95rem]">
+        <section className="border-t border-border py-5">
+          <div className="font-semibold">{t.sections.metrics}</div>
+          <ul className="mt-5 space-y-1.5 text-[0.95rem]">
             {t.metrics.map((m, i) => (
               <li key={i} className="relative pl-6">
                 <span
@@ -180,9 +181,9 @@ function Portfolio() {
               </li>
             ))}
           </ul>
-        </Section>
+        </section>
 
-        <Section title={t.sections.experience}>
+        <Section title={t.sections.experience} defaultOpen>
           <Bullets items={t.experience} />
         </Section>
 
