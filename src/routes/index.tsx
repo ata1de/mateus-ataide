@@ -142,11 +142,11 @@ function Portfolio() {
         <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border pt-5 text-sm">
           <span className="text-muted-foreground">{t.reach}</span>
           <a
-            href="mailto:mateusataide05@gmail.com"
+            href="mailto:mateusataide.contact@gmail.com"
             className="underline underline-offset-2"
             style={{ color: "var(--link)" }}
           >
-            mateusataide05@gmail.com
+            mateusataide.contact@gmail.com
           </a>
           <a
             href="https://github.com/ata1de"
