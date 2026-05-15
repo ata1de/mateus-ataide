@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { content, type Lang } from "@/lib/portfolio-content";
+import avatarImg from "@/assets/avatar.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -107,8 +108,19 @@ function Portfolio() {
       </header>
 
       <section id="about">
-        <h1 className="text-4xl font-bold tracking-tight">{t.name}</h1>
-        <p className="mt-2 text-muted-foreground">{t.location}</p>
+        <div className="flex items-center gap-5">
+          <img
+            src={avatarImg}
+            alt="mateus ataide"
+            width={72}
+            height={72}
+            className="h-16 w-16 rounded-full object-cover ring-1 ring-border sm:h-[72px] sm:w-[72px]"
+          />
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{t.name}</h1>
+            <p className="mt-1 text-sm text-muted-foreground">{t.location}</p>
+          </div>
+        </div>
 
         <div
           className="mt-6 rounded-md border-l-4 px-4 py-3 text-sm"
@@ -188,6 +200,24 @@ function Portfolio() {
                   <span className="text-sm text-muted-foreground">{p.period}</span>
                 </div>
                 <p className="mt-1 text-[0.95rem] text-foreground/85">{p.desc}</p>
+                {p.media?.type === "image" && (
+                  <img
+                    src={p.media.src}
+                    alt={p.media.alt ?? p.name}
+                    loading="lazy"
+                    className="mt-3 w-full rounded-md border border-border"
+                  />
+                )}
+                {p.media?.type === "video" && (
+                  <video
+                    src={p.media.src}
+                    poster={p.media.poster}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="mt-3 w-full rounded-md border border-border"
+                  />
+                )}
               </li>
             ))}
           </ul>
