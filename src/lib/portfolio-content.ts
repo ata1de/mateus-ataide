@@ -16,7 +16,7 @@ export const content = {
     nav: { about: "about", projects: "projects" },
     name: "Mateus Ataide",
     location: "🇧🇷 recife, pernambuco, brasil",
-    role: "software engineer & tech lead @ amigo tech | information systems @ ufpe (cin)",
+    role: "software engineer & team lead @ amigo tech | information systems @ ufpe (cin)",
     bio: [
       "backend engineer with 3+ years of experience building high-reliability fintech systems processing R$60M+/month. focused on golang, node.js/typescript and python, with growing expertise in applied ai — llms, rag and ai agents in production.",
       "currently leading a fintech squad at amigo tech and studying information systems at ufpe, one of brazil's top cs schools.",
@@ -39,12 +39,13 @@ export const content = {
     ],
     experience: [
       {
-        title: "amigo tech — software engineer & tech lead",
+        title: "amigo tech — software engineer & team lead",
         period: "nov 2025 – present",
         bullets: [
           "led fintech payment squad sustaining 17% monthly transaction growth",
           "architected e-commerce integration api (nestjs/typescript + redis) with projected +30% revenue impact",
           "reduced boleto generation time from 2 minutes to 100ms via async processing",
+          "reduced critical postgresql query latency from 13s to ~350ms via index redesign",
           "deployed automated tests with jest and ci/cd on the main payments api",
           "managed aws infrastructure: ecs, s3, cloudwatch, parameter store (ssm)",
           "conducted code reviews, 1:1s and technical mentoring",
@@ -59,14 +60,13 @@ export const content = {
           "implemented observability with grafana and datadog — 99% slo across all apis",
           "built ai customer support bot using python + rag + llms — reduced response time by 40%",
           "integrated google gemini into react native app for medical record generation — 1,000+ records/day",
-          "reduced critical postgresql query latency from 13s to ~350ms via index redesign",
         ],
       },
     ],
     projects: [
       {
         name: "gatewatch",
-        period: "2022 – present",
+        period: "2025 – 2026",
         desc: "real-time market data platform in continuous development for 3+ years. focus on high-performance data ingestion, processing and visualization.",
       },
       {
@@ -122,7 +122,7 @@ export const content = {
     nav: { about: "sobre", projects: "projetos" },
     name: "Mateus Ataide",
     location: "🇧🇷 recife, pernambuco, brasil",
-    role: "engenheiro de software & tech lead @ amigo tech | sistemas de informação @ ufpe (cin)",
+    role: "engenheiro de software & team lead @ amigo tech | sistemas de informação @ ufpe (cin)",
     bio: [
       "engenheiro de backend com 3+ anos de experiência construindo sistemas fintech de alta confiabilidade que processam R$60M+/mês. focado em golang, node.js/typescript e python, com expertise crescente em ia aplicada — llms, rag e agentes de ia em produção.",
       "atualmente liderando uma squad fintech na amigo tech e estudando sistemas de informação na ufpe, uma das melhores escolas de cs do brasil.",
@@ -145,12 +145,13 @@ export const content = {
     ],
     experience: [
       {
-        title: "amigo tech — engenheiro de software & tech lead",
+        title: "amigo tech — engenheiro de software & team lead",
         period: "nov 2025 – atual",
         bullets: [
           "liderança da squad de pagamentos sustentando 17% de crescimento mensal de transações",
           "arquitetei api de integração com e-commerce (nestjs/typescript + redis) com impacto projetado de +30% em receita",
           "reduzi o tempo de geração de boletos de 2 minutos para 100ms via processamento assíncrono",
+          "reduzi latência crítica de query postgresql de 13s para ~350ms via redesign de índices",
           "implementei testes automatizados com jest e ci/cd na principal api de pagamentos",
           "gerencio infraestrutura aws: ecs, s3, cloudwatch, parameter store (ssm)",
           "conduzo code reviews, 1:1s e mentoria técnica",
@@ -165,14 +166,13 @@ export const content = {
           "implementei observabilidade com grafana e datadog — 99% slo em todas as apis",
           "construí bot de atendimento com python + rag + llms — reduziu tempo de resposta em 40%",
           "integrei google gemini em app react native para geração de prontuários médicos — 1.000+ registros/dia",
-          "reduzi latência crítica de query postgresql de 13s para ~350ms via redesign de índices",
         ],
       },
     ],
     projects: [
       {
         name: "gatewatch",
-        period: "2022 – atual",
+        period: "2025 – 2026",
         desc: "plataforma de dados de mercado em tempo real em desenvolvimento contínuo há 3+ anos. foco em ingestão, processamento e visualização de dados de alta performance.",
       },
       {
