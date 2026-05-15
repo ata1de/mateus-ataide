@@ -66,8 +66,8 @@
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --background: oklch(0.985 0.008 80);
   --foreground: oklch(0.22 0.015 60);
-  --dot: oklch(0.55 0.15 35);
-  --link: oklch(0.5 0.16 35);
+  --dot: oklch(0.45 0.06 250);
+  --link: oklch(0.42 0.08 250);
   --highlight-bg: oklch(0.96 0.025 70);
   --highlight-border: oklch(0.65 0.14 40);
   --border: oklch(0.9 0.015 70);
