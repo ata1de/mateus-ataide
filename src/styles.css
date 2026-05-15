@@ -142,8 +142,14 @@
     border-color: var(--color-border);
   }
 
+  html {
+    font-family: var(--font-sans);
+    font-size: 15px;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
   }
 }
