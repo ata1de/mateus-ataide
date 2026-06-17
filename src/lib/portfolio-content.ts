@@ -34,7 +34,7 @@ export const content = {
     metrics: [
       "R$60M+/month processed",
       "60% reduction in human interaction via AI agents",
-      "30% projected revenue increase via partner API design and launch",
+      "30% projected revenue increase via ecommerce integration API design and launch",
       "~85x query performance improvement (13s → 150ms)",
       "MED (Pix dispute) system delivered in 1 week",
       "4s processing with 20,000 records (Go pipeline migration)",
@@ -162,6 +162,7 @@ export const content = {
     metrics: [
       "R$60M+/mês processados",
       "60% de redução na interação humana via agentes de IA",
+      "30% de aumento de receita projetado via design e lançamento de API de integração com ecommerce",
       "~85x melhoria de performance em queries (13s → 150ms)",
       "sistema MED (contestação de Pix) entregue em 1 semana",
       "processamento em 4s com 20.000 registros (migração Go)",
