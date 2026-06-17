@@ -89,6 +89,9 @@ function Portfolio() {
           <a href="#projects" className="hover:underline">
             {t.nav.projects}
           </a>
+          <a href="#certifications" className="hover:underline">
+            {t.nav.certifications}
+          </a>
         </nav>
         <div className="flex gap-1 text-xs text-muted-foreground">
           <button
@@ -239,6 +242,22 @@ function Portfolio() {
             ))}
           </ul>
         </Section>
+
+        <div id="certifications">
+          <Section title={t.sections.certifications}>
+            <ul className="space-y-1.5 text-[0.95rem]">
+              {t.certifications.map((c, i) => (
+                <li key={i} className="relative pl-6">
+                  <span
+                    className="absolute left-0 top-[0.45rem] h-2 w-2 rounded-full"
+                    style={{ backgroundColor: "var(--dot)" }}
+                  />
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </Section>
+        </div>
       </div>
 
       <footer className="mt-16 border-t border-border pt-5 text-xs text-muted-foreground">
