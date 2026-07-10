@@ -32,12 +32,11 @@ export const content = {
       certifications: "certifications",
     },
     metrics: [
-      "R$60M+/month processed",
-      "60% reduction in human interaction via AI agents",
-      "30% projected revenue increase via ecommerce integration API design and launch",
-      "~85x query performance improvement (13s → 150ms)",
-      "MED (Pix dispute) system delivered in 1 week",
-      "4s processing with 20,000 records (Go pipeline migration)",
+      { label: "monthly volume processed", value: "R$60M+" },
+      { label: "human interaction reduced (ai agents)", value: "−60%" },
+      { label: "projected revenue increase (ecommerce api)", value: "+30%" },
+      { label: "query performance improvement", value: "~85x" },
+      { label: "med (pix dispute) system, delivered", value: "1 week" },
     ],
     experience: [
       {
@@ -50,13 +49,12 @@ export const content = {
         ],
       },
       {
-        title: "amigo tech — software engineer & team lead",
+        title: "amigo tech — team lead",
         period: "nov 2025 – may 2026",
         bullets: [
           "Led a fintech squad, driving technical decisions, solution planning and product alignment, always focused on ownership and delivering real business impact.",
           "architected e-commerce integration api (nestjs/typescript + redis) with projected +30% revenue impact",
           "architected the med (pix dispute) system from scratch in nodejs and angular, delivered in 1 week with automated tests, webhooks and full flow, meeting a critical bacen requirement — impacts 75% of monthly transactions.",
-          "led migration of critical pipeline from NodeJS to Golang, reducing processing to ~4s with 20,000 records per execution.",
           "operated cloud infrastructure on aws (ecs, s3, sqs, sns, lambda, cloudwatch) with authentication, authorization and access control across payment apis.",
           "used claude code daily as an agentic pipeline for planning, implementation, review and debugging.",
         ],
@@ -66,7 +64,6 @@ export const content = {
         period: "sep 2024 – nov 2025",
         bullets: [
           "built and maintained backend apis and systems in nestjs/typescript and go for a platform processing r$60m+/month, with authentication, authorization and api security best practices.",
-          "built ai customer support bot using python + rag + openai api — reduced response time by 40% in production.",
           "reduced critical postgresql query latency from 13s to 150ms (~85x) via data analysis and profiling-based optimization.",
           "implemented observability with grafana and datadog — metrics, logs and alerts — ensuring 99% slo and supporting production experiment analysis.",
         ],
@@ -75,7 +72,7 @@ export const content = {
         title: "brightlift — founding engineer",
         period: "2023 – 2026",
         bullets: [
-          "built and maintained ai agents integrated with llm apis (openai, gemini), implementing rag, mcp, function calling and streaming with focus on maximizing value per token in automation workflows.",
+          "built and maintained ai agents integrated with llm apis (openai, gemini), implementing rag, function calling and streaming with focus on maximizing value per token in automation workflows.",
           "built llm evaluation and benchmarking infrastructure for model comparison without altering the application layer — enabling data-driven decisions.",
           "developed backend with fastapi (python), scraping + nlp pipeline for large-scale data analysis in mongodb, containerized with docker + ci/cd on aws.",
         ],
@@ -124,9 +121,20 @@ export const content = {
     skills: [
       { label: "languages", items: "golang, node.js, typescript, python, sql" },
       { label: "frontend & mobile", items: "react, angular, react native" },
-      { label: "architecture", items: "rest apis, distributed systems, microservices, async processing, api gateway" },
-      { label: "ai & llms", items: "rag, ai agents, llm orchestration (openai, gemini, claude), mcp, function calling, streaming, nlp, claude code" },
-      { label: "cloud", items: "aws (ecs, s3, sqs, sns, lambda, cloudwatch, parameter store), gcp, linux (ubuntu/debian)" },
+      {
+        label: "architecture",
+        items: "rest apis, distributed systems, microservices, async processing, api gateway",
+      },
+      {
+        label: "ai & llms",
+        items:
+          "rag, ai agents, llm orchestration (openai, gemini, claude), mcp, function calling, streaming, nlp, claude code",
+      },
+      {
+        label: "cloud",
+        items:
+          "aws (ecs, s3, sqs, sns, lambda, cloudwatch, parameter store), gcp, linux (ubuntu/debian)",
+      },
       { label: "databases", items: "postgresql, mysql, mongodb, redis" },
       { label: "quality", items: "automated tests, jest, ci/cd, code review, git" },
       { label: "observability", items: "grafana, datadog, cloudwatch, structured logging, slos" },
@@ -160,12 +168,12 @@ export const content = {
       certifications: "certificações",
     },
     metrics: [
-      "R$60M+/mês processados",
-      "60% de redução na interação humana via agentes de IA",
-      "30% de aumento de receita projetado via design e lançamento de API de integração com ecommerce",
-      "~85x melhoria de performance em queries (13s → 150ms)",
-      "sistema MED (contestação de Pix) entregue em 1 semana",
-      "processamento em 4s com 20.000 registros (migração Go)",
+      { label: "volume mensal processado", value: "R$60M+" },
+      { label: "redução na interação humana (agentes de ia)", value: "−60%" },
+      { label: "aumento de receita projetado (api de ecommerce)", value: "+30%" },
+      { label: "melhoria de performance em queries", value: "~85x" },
+      { label: "sistema med (contestação de pix), entregue em", value: "1 semana" },
+      { label: "throughput do pipeline go, 20 mil registros", value: "4s" },
     ],
     experience: [
       {
@@ -178,7 +186,7 @@ export const content = {
         ],
       },
       {
-        title: "amigo tech — engenheiro de software & team lead",
+        title: "amigo tech — team lead",
         period: "nov 2025 – mai 2026",
         bullets: [
           "Liderei uma squad fintech, conduzindo decisões técnicas, planejamento de soluções e alinhamento de produto, sempre focado em ownership e entrega de impacto real no negócio.",
@@ -257,9 +265,21 @@ export const content = {
     skills: [
       { label: "linguagens", items: "golang, node.js, typescript, python, sql" },
       { label: "frontend & mobile", items: "react, angular, react native" },
-      { label: "arquitetura", items: "rest apis, sistemas distribuídos, microsserviços, processamento assíncrono, api gateway" },
-      { label: "ia & llms", items: "rag, agentes de ia, orquestração de llm (openai, gemini, claude), mcp, function calling, streaming, nlp, claude code" },
-      { label: "cloud", items: "aws (ecs, s3, sqs, sns, lambda, cloudwatch, parameter store), gcp, linux (ubuntu/debian)" },
+      {
+        label: "arquitetura",
+        items:
+          "rest apis, sistemas distribuídos, microsserviços, processamento assíncrono, api gateway",
+      },
+      {
+        label: "ia & llms",
+        items:
+          "rag, agentes de ia, orquestração de llm (openai, gemini, claude), mcp, function calling, streaming, nlp, claude code",
+      },
+      {
+        label: "cloud",
+        items:
+          "aws (ecs, s3, sqs, sns, lambda, cloudwatch, parameter store), gcp, linux (ubuntu/debian)",
+      },
       { label: "bancos de dados", items: "postgresql, mysql, mongodb, redis" },
       { label: "qualidade", items: "testes automatizados, jest, ci/cd, code review, git" },
       { label: "observabilidade", items: "grafana, datadog, cloudwatch, logs estruturados, slos" },
