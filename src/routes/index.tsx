@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
+import { AboutBody } from "@/components/AboutBody";
 import { ChipGrid } from "@/components/ChipGrid";
 import { ContactFooter } from "@/components/ContactFooter";
 import { Hero } from "@/components/Hero";
@@ -52,12 +53,8 @@ function Portfolio() {
           <p className="text-xl leading-snug font-semibold tracking-[-0.02em] text-ink">
             {t.about.headline}
           </p>
-          <div className="mt-5 space-y-4">
-            {t.about.body.map((paragraph) => (
-              <p key={paragraph} className="text-sm leading-relaxed text-ink-80">
-                {paragraph}
-              </p>
-            ))}
+          <div className="mt-5">
+            <AboutBody blocks={t.about.body} />
           </div>
         </Section>
 
