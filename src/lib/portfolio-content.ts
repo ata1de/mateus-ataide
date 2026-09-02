@@ -215,7 +215,7 @@ export const content = {
       },
       {
         label: "Spoken",
-        items: ["portuguese (native)", "english (professional)", "spanish (professional)"],
+        items: ["🇧🇷 portuguese (native)", "🇺🇸 english (professional)", "🇪🇸 spanish (professional)"],
       },
     ],
     certifications: [
@@ -409,7 +409,7 @@ export const content = {
       },
       {
         label: "Idiomas",
-        items: ["português (nativo)", "inglês (profissional)", "espanhol (profissional)"],
+        items: ["🇧🇷 português (nativo)", "🇺🇸 inglês (profissional)", "🇪🇸 espanhol (profissional)"],
       },
     ],
     certifications: [
