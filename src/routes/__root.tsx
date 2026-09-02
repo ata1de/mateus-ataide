@@ -13,7 +13,7 @@ import appCss from "../styles.css?url";
 const SITE_URL = "https://mateusataide.com/";
 
 const DESCRIPTION =
-  "Mateus Ataide — software engineer & ai product builder. Experience, projects and techstack.";
+  "Mateus Ataide — software engineer at Stone, building high-criticality payment systems. Experience, projects and techstack.";
 
 const BUTTON =
   "inline-flex items-center justify-center rounded-card bg-ink px-4 py-2 text-sm font-medium text-bg transition-opacity hover:opacity-85";

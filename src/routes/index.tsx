@@ -12,15 +12,15 @@ import { content, type Lang } from "@/lib/portfolio-content";
 const SITE_URL = "https://mateusataide.com/";
 
 const DESCRIPTION =
-  "software engineer & ai product builder in recife, brasil. ai-native agentic pipelines at extreme group (volund), fintech systems processing R$60M+/month, golang, node.js, python.";
+  "software engineer at stone, in recife, brasil. high-criticality payment systems processing R$60M+/month — node.js/typescript, golang, python, postgresql, aws, and applied ai.";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
   head: () => ({
     meta: [
-      { title: "Mateus Ataide — software engineer & ai product builder" },
+      { title: "Mateus Ataide — software engineer" },
       { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: "Mateus Ataide — software engineer & ai product builder" },
+      { property: "og:title", content: "Mateus Ataide — software engineer" },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: SITE_URL },
     ],
