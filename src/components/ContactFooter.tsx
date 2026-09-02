@@ -29,6 +29,9 @@ export function ContactFooter({
         <a href={contact.linkedin} target="_blank" rel="noreferrer" className={LINK}>
           linkedin ↗
         </a>
+        <a href={contact.medium} target="_blank" rel="noreferrer" className={LINK}>
+          medium ↗
+        </a>
       </div>
 
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6 text-xs text-muted">

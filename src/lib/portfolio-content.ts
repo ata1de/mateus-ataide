@@ -35,6 +35,7 @@ export const contact = {
   email: "mateusataide.contact@gmail.com",
   github: "https://github.com/ata1de",
   linkedin: "https://linkedin.com/in/mateus-ataide",
+  medium: "https://medium.com/@mateusataide05",
 } as const;
 
 export const content = {
@@ -47,6 +48,7 @@ export const content = {
       about: "About",
       experience: "Journey",
       projects: "Projects",
+      writing: "Writing",
       education: "Education",
       skills: "Techstack",
       certifications: "Certifications",
@@ -59,6 +61,7 @@ export const content = {
         "most of my work lives in the unglamorous parts: a postgresql query taken from 13s to 150ms, boleto generation from 2 minutes to 100ms, an otp layer guarding r$35m+/month of sensitive operations, a bacen-mandated pix dispute flow shipped in a week.",
         "alongside that i build with applied ai — llms, rag and agents in production — an agentic slack tool that turned a 30–60min developer task into under 2 minutes of ops self-service, a rag support bot that cut handling time by 40%.",
         "studying computer technology at ufpe's centro de informática, one of brazil's top cs schools.",
+        "outside of work: i love to build stuff people want, i want to become a polyglot and go pro at hyrox — and i genuinely hate coffee.",
         "really interested in meeting new people and learning about their experiences. reach out if you want to chat!",
       ],
     },
@@ -241,6 +244,7 @@ export const content = {
       about: "Sobre",
       experience: "Jornada",
       projects: "Projetos",
+      writing: "Escrita",
       education: "Educação",
       skills: "Techstack",
       certifications: "Certificações",
@@ -253,6 +257,7 @@ export const content = {
         "meu trabalho mora nas partes pouco glamourosas: uma query no postgresql que saiu de 13s para 150ms, geração de boleto de 2 minutos para 100ms, uma camada de otp protegendo r$35m+/mês em operações sensíveis, um fluxo de contestação de pix exigido pelo bacen entregue em uma semana.",
         "em paralelo construo com ia aplicada — llms, rag e agentes em produção — uma tool agêntica no slack que transformou uma tarefa de 30–60min de dev em menos de 2 minutos na mão do operacional, um bot de atendimento com rag que cortou 40% do tempo de resposta.",
         "estudando tecnologia da computação no centro de informática da ufpe, uma das melhores escolas de cs do brasil.",
+        "fora do trabalho: amo construir coisas que as pessoas querem, quero me tornar poliglota e virar profissional de hyrox — e odeio café, sinceramente.",
         "tenho muito interesse em conhecer pessoas novas e aprender sobre suas experiências. me chama se quiser conversar!",
       ],
     },

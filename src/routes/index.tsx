@@ -6,7 +6,9 @@ import { ContactFooter } from "@/components/ContactFooter";
 import { Hero } from "@/components/Hero";
 import { JourneyEntry } from "@/components/JourneyEntry";
 import { ProjectCard } from "@/components/ProjectCard";
+import { PostCard } from "@/components/PostCard";
 import { Section } from "@/components/Section";
+import { getPosts } from "@/lib/medium";
 import { content, type Lang } from "@/lib/portfolio-content";
 
 const SITE_URL = "https://mateusataide.com/";
@@ -16,6 +18,7 @@ const DESCRIPTION =
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
+  loader: () => getPosts(),
   head: () => ({
     meta: [
       { title: "Mateus Ataide — software engineer" },
@@ -30,6 +33,7 @@ export const Route = createFileRoute("/")({
 
 function Portfolio() {
   const [lang, setLang] = useState<Lang>("en");
+  const posts = Route.useLoaderData();
   const t = content[lang];
 
   return (
@@ -80,6 +84,16 @@ function Portfolio() {
             ))}
           </div>
         </Section>
+
+        {posts.length > 0 && (
+          <Section id="writing" title={t.sections.writing}>
+            <div className="space-y-4">
+              {posts.map((post) => (
+                <PostCard key={post.url} post={post} lang={lang} />
+              ))}
+            </div>
+          </Section>
+        )}
 
         <Section id="education" title={t.sections.education}>
           <div className="space-y-10">
