@@ -57,7 +57,7 @@ export const content = {
       body: [
         "software engineer with 3+ years building high-criticality financial systems — payment platforms processing r$60m+/month in transactions for thousands of doctors and clinics across brazil. currently at stone.",
         "most of my work lives in the unglamorous parts: a postgresql query taken from 13s to 150ms, boleto generation from 2 minutes to 100ms, an otp layer guarding r$35m+/month of sensitive operations, a bacen-mandated pix dispute flow shipped in a week.",
-        "alongside that i build with applied ai — llms, rag and agents in production — an agentic slack tool that collapsed a 2h operational sla into 5s, a rag support bot that cut handling time by 40%.",
+        "alongside that i build with applied ai — llms, rag and agents in production — an agentic slack tool that turned a 30–60min developer task into under 2 minutes of ops self-service, a rag support bot that cut handling time by 40%.",
         "studying computer technology at ufpe's centro de informática, one of brazil's top cs schools.",
         "really interested in meeting new people and learning about their experiences. reach out if you want to chat!",
       ],
@@ -79,13 +79,12 @@ export const content = {
         role: "Software Engineer",
         period: "jul 2026 – sep 2026",
         bullets: [
-          "built an agentic slack tool for payment reprocessing, taking the dev team's operational sla from 2h to a 5s execution — tickets now close in under 2 minutes.",
-          "diagnosed and fixed a deadlock between two tables left updating without ever committing.",
+          "helped build an agentic slack tool for payment reprocessing. the task carried a 2h sla and took 30 to 60 minutes to actually run, since it waited on whichever developer was free; it now sits with the operations team and finishes in under 2 minutes, with no engineer in the loop.",
           "audited and cut aws spend by over 50% (~r$30k/year) by moving log retention to s3 and right-sizing ecs services.",
           "moved database migrations into a ci/cd action, removing over 70% of the manual work previously done by hand through aws.",
         ],
         stats: [
-          { value: "2h → 5s", label: "Payment reprocessing SLA" },
+          { value: "< 2 min", label: "Payment reprocessing, was 30–60min" },
           { value: "−50%", label: "AWS spend (~R$30k/year)" },
           { value: "−70%", label: "Manual migration work" },
         ],
@@ -248,7 +247,7 @@ export const content = {
       body: [
         "engenheiro de software com 3+ anos construindo sistemas financeiros de alta criticidade — plataformas de pagamento que processam r$60m+/mês em transações para milhares de médicos e clínicas no brasil. atualmente na stone.",
         "meu trabalho mora nas partes pouco glamourosas: uma query no postgresql que saiu de 13s para 150ms, geração de boleto de 2 minutos para 100ms, uma camada de otp protegendo r$35m+/mês em operações sensíveis, um fluxo de contestação de pix exigido pelo bacen entregue em uma semana.",
-        "em paralelo construo com ia aplicada — llms, rag e agentes em produção — uma tool agêntica no slack que transformou um sla de 2h em 5s, um bot de atendimento com rag que cortou 40% do tempo de resposta.",
+        "em paralelo construo com ia aplicada — llms, rag e agentes em produção — uma tool agêntica no slack que transformou uma tarefa de 30–60min de dev em menos de 2 minutos na mão do operacional, um bot de atendimento com rag que cortou 40% do tempo de resposta.",
         "estudando tecnologia da computação no centro de informática da ufpe, uma das melhores escolas de cs do brasil.",
         "tenho muito interesse em conhecer pessoas novas e aprender sobre suas experiências. me chama se quiser conversar!",
       ],
@@ -270,13 +269,12 @@ export const content = {
         role: "Engenheiro de Software",
         period: "jul 2026 – set 2026",
         bullets: [
-          "criei uma tool agêntica no slack para reprocessamento de pagamento, levando o sla operacional do time de dev de 2h para uma execução de 5s — chamados fecham em menos de 2 minutos.",
-          "diagnostiquei e resolvi um deadlock entre duas tabelas que atualizavam sem nunca commitar.",
+          "ajudei a construir uma tool agêntica no slack para reprocessamento de pagamento. a tarefa tinha sla de 2h e levava de 30 minutos a 1 hora para ser executada, porque dependia de algum desenvolvedor estar livre; hoje fica na mão do operacional e termina em menos de 2 minutos, sem engenheiro no meio.",
           "analisei e reduzi os custos de aws em mais de 50% (~r$30 mil/ano) movendo a retenção de logs para o s3 e reduzindo custos em serviços no ecs.",
           "movi as migrations para uma action no ci/cd, eliminando mais de 70% do trabalho manual que antes era feito na mão pela aws.",
         ],
         stats: [
-          { value: "2h → 5s", label: "SLA de reprocessamento" },
+          { value: "< 2 min", label: "Reprocessamento, era 30–60min" },
           { value: "−50%", label: "Custo de AWS (~R$30 mil/ano)" },
           { value: "−70%", label: "Trabalho manual de migration" },
         ],
