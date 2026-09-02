@@ -23,6 +23,12 @@ export type Project = {
   link?: { href: string; label: string };
 };
 
+/** A paragraph in the about section, optionally introducing a list. */
+export type AboutBlock = {
+  text: string;
+  items?: string[];
+};
+
 export type Education = {
   slug: string;
   title: string;
@@ -57,13 +63,40 @@ export const content = {
     about: {
       headline: "I build the systems that decide whether money actually moves",
       body: [
-        "software engineer with 3+ years building high-criticality financial systems — payment platforms processing r$60m+/month in transactions for thousands of doctors and clinics across brazil. currently at stone.",
-        "most of my work lives in the unglamorous parts: a postgresql query taken from 13s to 150ms, boleto generation from 2 minutes to 100ms, an otp layer guarding r$35m+/month of sensitive operations, a bacen-mandated pix dispute flow shipped in a week.",
-        "alongside that i build with applied ai — llms, rag and agents in production — an agentic slack tool that turned a 30–60min developer task into under 2 minutes of ops self-service, a rag support bot that cut handling time by 40%.",
-        "studying computer technology at ufpe's centro de informática, one of brazil's top cs schools.",
-        "outside of work: i love to build stuff people want, i want to become a polyglot and go pro at hyrox — and i genuinely hate coffee.",
-        "really interested in meeting new people and learning about their experiences. reach out if you want to chat!",
-      ],
+        {
+          text: "software engineer with 3+ years building high-criticality financial systems — payment platforms processing r$60m+/month in transactions for thousands of doctors and clinics across brazil. currently at stone.",
+        },
+        {
+          text: "most of my work lives in the unglamorous parts:",
+          items: [
+            "a postgresql query taken from 13s to 150ms.",
+            "boleto generation from 2 minutes to 100ms.",
+            "an otp layer guarding r$35m+/month of sensitive operations.",
+            "a bacen-mandated pix dispute flow shipped in a week.",
+          ],
+        },
+        {
+          text: "alongside that i build with applied ai — llms, rag and agents in production:",
+          items: [
+            "an agentic slack tool that turned a 30–60min developer task into under 2 minutes of ops self-service.",
+            "a rag support bot that cut handling time by 40%.",
+          ],
+        },
+        {
+          text: "studying computer technology at ufpe's centro de informática, one of brazil's top cs schools.",
+        },
+        {
+          text: "outside of work:",
+          items: [
+            "i love to build stuff people want.",
+            "i want to become a polyglot and go pro at hyrox.",
+            "i genuinely hate coffee.",
+          ],
+        },
+        {
+          text: "really interested in meeting new people and learning about their experiences. reach out if you want to chat!",
+        },
+      ] as AboutBlock[],
     },
     contactPrompt: "Got something interesting to say?",
     experience: [
@@ -107,9 +140,6 @@ export const content = {
           "cut payment-slip (boleto) generation from over 2 minutes to 100ms by moving installment creation to an asynchronous model.",
           "architected the med (pix dispute) system from scratch, delivered in 1 week with unit tests, webhooks and a complete refund flow, meeting a critical bacen requirement — impacts 75% of monthly transactions.",
           "contributed to features sustaining an average 17% monthly growth in transaction volume across the payment platform.",
-          "led the migration of a critical pipeline from node.js to go, cutting processing down to ~4s for 20,000 records per run.",
-          "operated cloud infrastructure on aws (ecs, s3, sqs, sns, lambda, cloudwatch) with authentication, authorization and access control across payment apis.",
-          "used claude code daily as an agentic pipeline for planning, implementation, review and debugging.",
         ],
         stats: [
           { value: "+30%", label: "Projected revenue" },
@@ -253,13 +283,40 @@ export const content = {
     about: {
       headline: "Construo os sistemas que decidem se o dinheiro realmente sai do lugar",
       body: [
-        "engenheiro de software com 3+ anos construindo sistemas financeiros de alta criticidade — plataformas de pagamento que processam r$60m+/mês em transações para milhares de médicos e clínicas no brasil. atualmente na stone.",
-        "meu trabalho mora nas partes pouco glamourosas: uma query no postgresql que saiu de 13s para 150ms, geração de boleto de 2 minutos para 100ms, uma camada de otp protegendo r$35m+/mês em operações sensíveis, um fluxo de contestação de pix exigido pelo bacen entregue em uma semana.",
-        "em paralelo construo com ia aplicada — llms, rag e agentes em produção — uma tool agêntica no slack que transformou uma tarefa de 30–60min de dev em menos de 2 minutos na mão do operacional, um bot de atendimento com rag que cortou 40% do tempo de resposta.",
-        "estudando tecnologia da computação no centro de informática da ufpe, uma das melhores escolas de cs do brasil.",
-        "fora do trabalho: amo construir coisas que as pessoas querem, quero me tornar poliglota e virar profissional de hyrox — e odeio café, sinceramente.",
-        "tenho muito interesse em conhecer pessoas novas e aprender sobre suas experiências. me chama se quiser conversar!",
-      ],
+        {
+          text: "engenheiro de software com 3+ anos construindo sistemas financeiros de alta criticidade — plataformas de pagamento que processam r$60m+/mês em transações para milhares de médicos e clínicas no brasil. atualmente na stone.",
+        },
+        {
+          text: "meu trabalho mora nas partes pouco glamourosas:",
+          items: [
+            "uma query no postgresql que saiu de 13s para 150ms.",
+            "geração de boleto de 2 minutos para 100ms.",
+            "uma camada de otp protegendo r$35m+/mês em operações sensíveis.",
+            "um fluxo de contestação de pix exigido pelo bacen entregue em uma semana.",
+          ],
+        },
+        {
+          text: "em paralelo construo com ia aplicada — llms, rag e agentes em produção:",
+          items: [
+            "uma tool agêntica no slack que transformou uma tarefa de 30–60min de dev em menos de 2 minutos na mão do operacional.",
+            "um bot de atendimento com rag que cortou 40% do tempo de resposta.",
+          ],
+        },
+        {
+          text: "estudando tecnologia da computação no centro de informática da ufpe, uma das melhores escolas de cs do brasil.",
+        },
+        {
+          text: "fora do trabalho:",
+          items: [
+            "amo construir coisas que as pessoas querem.",
+            "quero me tornar poliglota e virar profissional de hyrox.",
+            "odeio café, sinceramente.",
+          ],
+        },
+        {
+          text: "tenho muito interesse em conhecer pessoas novas e aprender sobre suas experiências. me chama se quiser conversar!",
+        },
+      ] as AboutBlock[],
     },
     contactPrompt: "Tem algo interessante pra dizer?",
     experience: [
@@ -303,9 +360,6 @@ export const content = {
           "reduzi a geração de boleto de mais de 2 minutos para 100ms ao migrar a criação de parcelas para um modelo assíncrono.",
           "arquitetei do zero o sistema de med (contestação de pix), entregue em 1 semana com testes unitários, webhooks e fluxo completo de estorno, atendendo exigência crítica do bacen — impacta 75% das transações mensais.",
           "contribuí com features que sustentaram um crescimento médio de 17% ao mês no volume transacionado da plataforma.",
-          "liderei migração de pipeline crítico de node.js para go, reduzindo processamento para ~4s com 20.000 registros por execução.",
-          "operei infraestrutura em nuvem na aws (ecs, s3, sqs, sns, lambda, cloudwatch) com autenticação, autorização e controle de acesso nas apis de pagamento.",
-          "utilizei claude code diariamente como esteira agêntica para planejamento, implementação, revisão e debugging.",
         ],
         stats: [
           { value: "+30%", label: "Receita projetada" },
