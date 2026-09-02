@@ -70,7 +70,11 @@ export const content = {
         role: "Software Engineer",
         period: "sep 2026 – present",
         bullets: [
-          "recently joined stone's engineering team, working on payment systems at one of brazil's largest fintechs.",
+          "building on payment systems that run across roughly 5m pos terminals and reach more than 5m clients, at one of brazil's largest fintechs.",
+        ],
+        stats: [
+          { value: "~5M", label: "POS terminals" },
+          { value: "5M+", label: "Clients reached" },
         ],
       },
       {
@@ -260,7 +264,11 @@ export const content = {
         role: "Engenheiro de Software",
         period: "set 2026 – atual",
         bullets: [
-          "entrei recentemente no time de engenharia da stone, trabalhando em sistemas de pagamento em uma das maiores fintechs do brasil.",
+          "construindo sistemas de pagamento que rodam em cerca de 5 milhões de terminais pos e alcançam mais de 5 milhões de clientes, em uma das maiores fintechs do brasil.",
+        ],
+        stats: [
+          { value: "~5M", label: "Terminais POS" },
+          { value: "5M+", label: "Clientes alcançados" },
         ],
       },
       {
