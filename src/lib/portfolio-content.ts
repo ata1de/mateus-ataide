@@ -80,12 +80,12 @@ export const content = {
         period: "jul 2026 – sep 2026",
         bullets: [
           "helped build an agentic slack tool for payment reprocessing. the task carried a 2h sla and took 30 to 60 minutes to actually run, since it waited on whichever developer was free; it now sits with the operations team and finishes in under 2 minutes, with no engineer in the loop.",
-          "audited and cut aws spend by over 50% (~r$30k/year) by moving log retention to s3 and right-sizing ecs services.",
+          "audited aws spend and scoped a projected reduction of over 50% (~r$30k/year) — moving log retention to s3 and right-sizing ecs services.",
           "moved database migrations into a ci/cd action, removing over 70% of the manual work previously done by hand through aws.",
         ],
         stats: [
           { value: "< 2 min", label: "Payment reprocessing, was 30–60min" },
-          { value: "−50%", label: "AWS spend (~R$30k/year)" },
+          { value: "−50%", label: "Projected AWS saving (~R$30k/year)" },
           { value: "−70%", label: "Manual migration work" },
         ],
       },
@@ -270,12 +270,12 @@ export const content = {
         period: "jul 2026 – set 2026",
         bullets: [
           "ajudei a construir uma tool agêntica no slack para reprocessamento de pagamento. a tarefa tinha sla de 2h e levava de 30 minutos a 1 hora para ser executada, porque dependia de algum desenvolvedor estar livre; hoje fica na mão do operacional e termina em menos de 2 minutos, sem engenheiro no meio.",
-          "analisei e reduzi os custos de aws em mais de 50% (~r$30 mil/ano) movendo a retenção de logs para o s3 e reduzindo custos em serviços no ecs.",
+          "analisei os custos de aws e provisionei uma redução projetada de mais de 50% (~r$30 mil/ano) — movendo a retenção de logs para o s3 e reduzindo custos em serviços no ecs.",
           "movi as migrations para uma action no ci/cd, eliminando mais de 70% do trabalho manual que antes era feito na mão pela aws.",
         ],
         stats: [
           { value: "< 2 min", label: "Reprocessamento, era 30–60min" },
-          { value: "−50%", label: "Custo de AWS (~R$30 mil/ano)" },
+          { value: "−50%", label: "Economia projetada de AWS (~R$30 mil/ano)" },
           { value: "−70%", label: "Trabalho manual de migration" },
         ],
       },
