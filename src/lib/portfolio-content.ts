@@ -140,9 +140,6 @@ export const content = {
           "cut payment-slip (boleto) generation from over 2 minutes to 100ms by moving installment creation to an asynchronous model.",
           "architected the med (pix dispute) system from scratch, delivered in 1 week with unit tests, webhooks and a complete refund flow, meeting a critical bacen requirement — impacts 75% of monthly transactions.",
           "contributed to features sustaining an average 17% monthly growth in transaction volume across the payment platform.",
-          "led the migration of a critical pipeline from node.js to go, cutting processing down to ~4s for 20,000 records per run.",
-          "operated cloud infrastructure on aws (ecs, s3, sqs, sns, lambda, cloudwatch) with authentication, authorization and access control across payment apis.",
-          "used claude code daily as an agentic pipeline for planning, implementation, review and debugging.",
         ],
         stats: [
           { value: "+30%", label: "Projected revenue" },
@@ -363,9 +360,6 @@ export const content = {
           "reduzi a geração de boleto de mais de 2 minutos para 100ms ao migrar a criação de parcelas para um modelo assíncrono.",
           "arquitetei do zero o sistema de med (contestação de pix), entregue em 1 semana com testes unitários, webhooks e fluxo completo de estorno, atendendo exigência crítica do bacen — impacta 75% das transações mensais.",
           "contribuí com features que sustentaram um crescimento médio de 17% ao mês no volume transacionado da plataforma.",
-          "liderei migração de pipeline crítico de node.js para go, reduzindo processamento para ~4s com 20.000 registros por execução.",
-          "operei infraestrutura em nuvem na aws (ecs, s3, sqs, sns, lambda, cloudwatch) com autenticação, autorização e controle de acesso nas apis de pagamento.",
-          "utilizei claude code diariamente como esteira agêntica para planejamento, implementação, revisão e debugging.",
         ],
         stats: [
           { value: "+30%", label: "Receita projetada" },
