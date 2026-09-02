@@ -20,8 +20,8 @@ dist-ssr
 .wrangler/
 .dev.vars
 
-# Vercel build output (gerado pelo npm run build)
-.vercel/output
+# Vercel: build output e o project.json com os IDs de projeto/org
+.vercel/
 
 # Editor directories and files
 .vscode/*
