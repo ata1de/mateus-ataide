@@ -79,7 +79,7 @@ export const content = {
         role: "Software Engineer",
         period: "jul 2026 – sep 2026",
         bullets: [
-          "helped build an agentic slack tool for payment reprocessing. the task carried a 2h sla and took 30 to 60 minutes to actually run, since it waited on whichever developer was free; it now sits with the operations team and finishes in under 2 minutes, with no engineer in the loop.",
+          "helped build an agentic slack tool for payment reprocessing. the process took 30 to 60 minutes and leaned heavily on developer availability; the operations team now runs it with full autonomy and resolves it in under 2 minutes.",
           "audited aws spend and scoped a projected reduction of over 50% (~r$30k/year) — moving log retention to s3 and right-sizing ecs services.",
           "moved database migrations into a ci/cd action, removing over 70% of the manual work previously done by hand through aws.",
         ],
@@ -269,7 +269,7 @@ export const content = {
         role: "Engenheiro de Software",
         period: "jul 2026 – set 2026",
         bullets: [
-          "ajudei a construir uma tool agêntica no slack para reprocessamento de pagamento. a tarefa tinha sla de 2h e levava de 30 minutos a 1 hora para ser executada, porque dependia de algum desenvolvedor estar livre; hoje fica na mão do operacional e termina em menos de 2 minutos, sem engenheiro no meio.",
+          "ajudei a construir uma tool agêntica no slack para reprocessamento de pagamento. o processo levava de 30 a 60 minutos e tinha uma dependência muito grande dos desenvolvedores; hoje o operacional tem 100% de autonomia e resolve em menos de 2 minutos.",
           "analisei os custos de aws e provisionei uma redução projetada de mais de 50% (~r$30 mil/ano) — movendo a retenção de logs para o s3 e reduzindo custos em serviços no ecs.",
           "movi as migrations para uma action no ci/cd, eliminando mais de 70% do trabalho manual que antes era feito na mão pela aws.",
         ],
