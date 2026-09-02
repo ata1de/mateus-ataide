@@ -40,9 +40,9 @@ export function Hero({
         <img
           src={avatar}
           alt={name}
-          width={88}
-          height={88}
-          className="size-16 shrink-0 rounded-full border border-line object-cover sm:size-22"
+          width={112}
+          height={112}
+          className="size-20 shrink-0 rounded-full border border-line object-cover sm:size-28"
         />
       </div>
     </header>

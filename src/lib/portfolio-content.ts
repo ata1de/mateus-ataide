@@ -40,7 +40,7 @@ export const contact = {
 export const content = {
   en: {
     name: "Mateus Ataide",
-    location: "Recife, Pernambuco, Brazil",
+    location: "Brazil",
     tagline: "I'm Mateus; software engineer at Stone — payments, and applied ai on the side.",
     status: "open to chat",
     sections: {
@@ -57,7 +57,7 @@ export const content = {
       body: [
         "software engineer with 3+ years building high-criticality financial systems — payment platforms processing r$60m+/month in transactions for thousands of doctors and clinics across brazil. currently at stone.",
         "most of my work lives in the unglamorous parts: a postgresql query taken from 13s to 150ms, boleto generation from 2 minutes to 100ms, an otp layer guarding r$35m+/month of sensitive operations, a bacen-mandated pix dispute flow shipped in a week.",
-        "alongside that i build with applied ai — llms, rag and agents in production — and i've used it to take human steps out of development pipelines entirely.",
+        "alongside that i build with applied ai — llms, rag and agents in production — an agentic slack tool that collapsed a 2h operational sla into 5s, a rag support bot that cut handling time by 40%.",
         "studying computer technology at ufpe's centro de informática, one of brazil's top cs schools.",
         "really interested in meeting new people and learning about their experiences. reach out if you want to chat!",
       ],
@@ -77,26 +77,24 @@ export const content = {
         slug: "robbin",
         company: "Robbin",
         role: "Software Engineer",
-        period: "jul 2026 – sep 2026 · são paulo",
-        bullets: ["backend engineering on the product team."],
-      },
-      {
-        slug: "extreme-group",
-        company: "Extreme Group (Volund)",
-        role: "AI Product Builder",
-        period: "jun 2026 – jul 2026",
+        period: "jul 2026 – sep 2026",
         bullets: [
-          "transformed manual projects into ai-native workflows through specialized agents, eliminating human bottlenecks in repetitive development and operational steps.",
-          "contributed to building volund os, an agent creation platform for cross-functional use (commercial, product, c-levels), integrating claude code and cursor sdk to unify models and integrations across the organization.",
-          "integrated a legacy prodesp project from prototype to gcp deploy, reducing human interaction in the development cycle by 60% via ai agent automation.",
+          "built an agentic slack tool for payment reprocessing, taking the dev team's operational sla from 2h to a 5s execution — tickets now close in under 2 minutes.",
+          "diagnosed and fixed a deadlock between two tables left updating without ever committing.",
+          "audited and cut aws spend by over 50% (~r$30k/year) by moving log retention to s3 and right-sizing ecs services.",
+          "moved database migrations into a ci/cd action, removing over 70% of the manual work previously done by hand through aws.",
         ],
-        stats: [{ value: "−60%", label: "Human interaction" }],
+        stats: [
+          { value: "2h → 5s", label: "Payment reprocessing SLA" },
+          { value: "−50%", label: "AWS spend (~R$30k/year)" },
+          { value: "−70%", label: "Manual migration work" },
+        ],
       },
       {
         slug: "amigo-tech",
         company: "Amigo Tech",
         role: "Team Leader",
-        period: "sep 2025 – may 2026 · recife",
+        period: "sep 2025 – may 2026",
         bullets: [
           "led a fintech squad building payment solutions, driving technical decisions, solution planning and product alignment — and mentoring engineers through code reviews, 1:1s and continuous feedback.",
           "designed and launched a partner api for e-commerce integrations enabling flexible multi-payment checkout — pix qr code and installment card payments with dynamic interest calculation — with redis-backed rate limiting and ip controls in nestjs. projected +30% revenue.",
@@ -118,7 +116,7 @@ export const content = {
         slug: "amigo-tech",
         company: "Amigo Tech",
         role: "Software Engineer",
-        period: "sep 2024 – may 2026 · recife",
+        period: "sep 2024 – may 2026",
         bullets: [
           "drove the evolution of amigo pay, the financial platform inside the amigo ecosystem, building and integrating high-impact features in nestjs/typescript and go on a platform processing 100m+ tpv.",
           "reduced accounts-receivable query latency from 13s to 150ms (~85x) by optimizing postgresql queries, execution plans and indexes over high-volume financial datasets.",
@@ -162,36 +160,17 @@ export const content = {
         period: "2024",
         desc: "real-time tracking and analytics platform to monitor assets and events, with operational visibility and live insights.",
       },
-      {
-        name: "Reembolso AI",
-        period: "2024",
-        desc: "ai-driven expense management system: receipt parsing, approval flows and real-time financial insights for tighter control and faster reimbursements.",
-      },
-      {
-        name: "Contract Automation API",
-        period: "2024",
-        desc: "go backend for contract generation automation. applied idiomatic concurrency patterns with goroutines and channels. containerized with docker for environment parity.",
-      },
     ] as Project[],
     education: [
       {
         slug: "ufpe",
         title: "UFPE — Centro de Informática (CIn)",
         role: "Computer Technology / Computer Systems",
-        period: "jan 2023 – jan 2027, Recife, Brazil",
+        period: "jan 2023 – jan 2027",
         bullets: [
           "one of the top cs teaching and research centers in brazil and latin america.",
           "key subjects: algorithms, data structures, operating systems, oop, software engineering, systems architecture, ai, databases.",
-        ],
-      },
-      {
-        slug: "ufpe",
-        title: "UFPE",
-        role: "Teaching Assistant",
-        period: "2023 – present",
-        bullets: [
-          "algorithms & data structures and programming logic.",
-          "helped students with problem solving, complexity analysis and computational thinking.",
+          "teaching assistant since 2023 for algorithms & data structures and programming logic — helping students with problem solving, complexity analysis and computational thinking.",
         ],
       },
     ] as Education[],
@@ -251,7 +230,7 @@ export const content = {
 
   pt: {
     name: "Mateus Ataide",
-    location: "Recife, Pernambuco, Brasil",
+    location: "Brasil",
     tagline:
       "Sou o Mateus; engenheiro de software na Stone — pagamentos, e ia aplicada em paralelo.",
     status: "aberto a conversar",
@@ -269,7 +248,7 @@ export const content = {
       body: [
         "engenheiro de software com 3+ anos construindo sistemas financeiros de alta criticidade — plataformas de pagamento que processam r$60m+/mês em transações para milhares de médicos e clínicas no brasil. atualmente na stone.",
         "meu trabalho mora nas partes pouco glamourosas: uma query no postgresql que saiu de 13s para 150ms, geração de boleto de 2 minutos para 100ms, uma camada de otp protegendo r$35m+/mês em operações sensíveis, um fluxo de contestação de pix exigido pelo bacen entregue em uma semana.",
-        "em paralelo construo com ia aplicada — llms, rag e agentes em produção — e usei isso para eliminar etapas humanas de esteiras de desenvolvimento.",
+        "em paralelo construo com ia aplicada — llms, rag e agentes em produção — uma tool agêntica no slack que transformou um sla de 2h em 5s, um bot de atendimento com rag que cortou 40% do tempo de resposta.",
         "estudando tecnologia da computação no centro de informática da ufpe, uma das melhores escolas de cs do brasil.",
         "tenho muito interesse em conhecer pessoas novas e aprender sobre suas experiências. me chama se quiser conversar!",
       ],
@@ -289,26 +268,24 @@ export const content = {
         slug: "robbin",
         company: "Robbin",
         role: "Engenheiro de Software",
-        period: "jul 2026 – set 2026 · são paulo",
-        bullets: ["engenharia de backend no time de produto."],
-      },
-      {
-        slug: "extreme-group",
-        company: "Extreme Group (Volund)",
-        role: "AI Product Builder",
-        period: "jun 2026 – jul 2026",
+        period: "jul 2026 – set 2026",
         bullets: [
-          "transformei projetos manuais em fluxos ai-native através da criação de agentes especializados, eliminando gargalos humanos em etapas repetitivas de desenvolvimento e operação.",
-          "participei da construção do volund os, plataforma de criação de agentes para uso transversal (comercial, produto e c-levels), integrando claude code e o sdk do cursor para unificar modelos e integrações em toda a organização.",
-          "integrei projeto legado do prodesp da prototipação ao deploy em gcp, reduzindo em 60% a interação humana no ciclo de desenvolvimento via automação com agentes de ia.",
+          "criei uma tool agêntica no slack para reprocessamento de pagamento, levando o sla operacional do time de dev de 2h para uma execução de 5s — chamados fecham em menos de 2 minutos.",
+          "diagnostiquei e resolvi um deadlock entre duas tabelas que atualizavam sem nunca commitar.",
+          "analisei e reduzi os custos de aws em mais de 50% (~r$30 mil/ano) movendo a retenção de logs para o s3 e reduzindo custos em serviços no ecs.",
+          "movi as migrations para uma action no ci/cd, eliminando mais de 70% do trabalho manual que antes era feito na mão pela aws.",
         ],
-        stats: [{ value: "−60%", label: "Interação humana" }],
+        stats: [
+          { value: "2h → 5s", label: "SLA de reprocessamento" },
+          { value: "−50%", label: "Custo de AWS (~R$30 mil/ano)" },
+          { value: "−70%", label: "Trabalho manual de migration" },
+        ],
       },
       {
         slug: "amigo-tech",
         company: "Amigo Tech",
         role: "Team Leader",
-        period: "set 2025 – mai 2026 · recife",
+        period: "set 2025 – mai 2026",
         bullets: [
           "liderei uma squad fintech de soluções de pagamento, conduzindo decisões técnicas, planejamento de soluções e alinhamento de produto — e mentorando engenheiros via code review, 1:1s e feedback contínuo.",
           "projetei e lancei uma api de parceiros para integrações com e-commerce, viabilizando checkout multi-pagamento flexível — pix qr code e cartão parcelado com cálculo dinâmico de juros — com rate limiting via redis e controle de ip em nestjs. impacto projetado de +30% em receita.",
@@ -330,7 +307,7 @@ export const content = {
         slug: "amigo-tech",
         company: "Amigo Tech",
         role: "Engenheiro de Software",
-        period: "set 2024 – mai 2026 · recife",
+        period: "set 2024 – mai 2026",
         bullets: [
           "conduzi a evolução do amigo pay, a plataforma financeira do ecossistema amigo, construindo e integrando features de alto impacto em nestjs/typescript e go numa plataforma que processa 100m+ de tpv.",
           "reduzi a latência de consultas de contas a receber de 13s para 150ms (~85x) otimizando queries, planos de execução e índices no postgresql sobre bases financeiras de alto volume.",
@@ -374,36 +351,17 @@ export const content = {
         period: "2024",
         desc: "plataforma de rastreamento e analytics em tempo real para monitorar ativos e eventos, com visibilidade operacional e insights ao vivo.",
       },
-      {
-        name: "Reembolso AI",
-        period: "2024",
-        desc: "sistema de gestão de despesas com ia: parsing de recibos, fluxos de aprovação e insights financeiros em tempo real para melhor controle e reembolsos mais rápidos.",
-      },
-      {
-        name: "Contract Automation API",
-        period: "2024",
-        desc: "backend em go para automação de geração de contratos. apliquei padrões idiomáticos de concorrência com goroutines e channels. containerizado com docker para paridade entre ambientes.",
-      },
     ] as Project[],
     education: [
       {
         slug: "ufpe",
         title: "UFPE — Centro de Informática (CIn)",
         role: "Tecnologia da Computação / Sistemas de Computação",
-        period: "jan 2023 – jan 2027, Recife, Brasil",
+        period: "jan 2023 – jan 2027",
         bullets: [
           "um dos principais centros de ensino e pesquisa em cs do brasil e da américa latina.",
           "matérias-chave: algoritmos, estruturas de dados, sistemas operacionais, poo, engenharia de software, arquitetura de sistemas, ia, bancos de dados.",
-        ],
-      },
-      {
-        slug: "ufpe",
-        title: "UFPE",
-        role: "Monitor (Teaching Assistant)",
-        period: "2023 – atual",
-        bullets: [
-          "algoritmos & estruturas de dados e lógica de programação.",
-          "ajudei estudantes com resolução de problemas, análise de complexidade e pensamento computacional.",
+          "monitor desde 2023 de algoritmos & estruturas de dados e lógica de programação — ajudando estudantes com resolução de problemas, análise de complexidade e pensamento computacional.",
         ],
       },
     ] as Education[],

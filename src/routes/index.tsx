@@ -12,7 +12,7 @@ import { content, type Lang } from "@/lib/portfolio-content";
 const SITE_URL = "https://mateusataide.com/";
 
 const DESCRIPTION =
-  "software engineer at stone, in recife, brasil. high-criticality payment systems processing R$60M+/month — node.js/typescript, golang, python, postgresql, aws, and applied ai.";
+  "software engineer at stone, in brasil. high-criticality payment systems processing R$60M+/month — node.js/typescript, golang, python, postgresql, aws, and applied ai.";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
