@@ -65,6 +65,8 @@ function Portfolio() {
                 key={`${job.company}-${job.role}`}
                 slug={job.slug}
                 subject={job.company}
+                blurb={job.blurb}
+                site={job.site}
                 role={job.role}
                 period={job.period}
                 bullets={job.bullets}
@@ -99,6 +101,8 @@ function Portfolio() {
                 key={`${entry.title}-${entry.role}`}
                 slug={entry.slug}
                 subject={entry.title}
+                blurb={entry.blurb}
+                site={entry.site}
                 role={entry.role}
                 period={entry.period}
                 bullets={entry.bullets}

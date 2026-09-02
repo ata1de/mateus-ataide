@@ -10,6 +10,9 @@ export type Experience = {
   /** Used to look up /logos/<slug>.png, and as the monogram source when absent. */
   slug: string;
   company: string;
+  /** One line on what the company does. Links to `site` when there is one. */
+  blurb: string;
+  site?: string;
   role: string;
   period: string;
   bullets: string[];
@@ -32,6 +35,8 @@ export type AboutBlock = {
 export type Education = {
   slug: string;
   title: string;
+  blurb: string;
+  site?: string;
   role: string;
   period: string;
   bullets: string[];
@@ -103,6 +108,8 @@ export const content = {
       {
         slug: "stone",
         company: "Stone",
+        blurb: "brazilian fintech — payments, banking and credit for merchants.",
+        site: "https://www.stone.com.br",
         role: "Software Engineer",
         period: "sep 2026 – present",
         bullets: [
@@ -116,6 +123,8 @@ export const content = {
       {
         slug: "robbin",
         company: "Robbin",
+        blurb: "private-label b2b credit infrastructure for industries and distributors.",
+        site: "https://robbin.com.br",
         role: "Software Engineer",
         period: "jul 2026 – sep 2026",
         bullets: [
@@ -132,6 +141,8 @@ export const content = {
       {
         slug: "amigo-tech",
         company: "Amigo Tech",
+        blurb: "software and payments for clinics and healthcare professionals.",
+        site: "https://amigotech.com.br",
         role: "Team Leader",
         period: "sep 2025 – may 2026",
         bullets: [
@@ -151,6 +162,8 @@ export const content = {
       {
         slug: "amigo-tech",
         company: "Amigo Tech",
+        blurb: "software and payments for clinics and healthcare professionals.",
+        site: "https://amigotech.com.br",
         role: "Software Engineer",
         period: "sep 2024 – may 2026",
         bullets: [
@@ -171,6 +184,7 @@ export const content = {
       {
         slug: "brightlift",
         company: "Brightlift",
+        blurb: "ai-powered automation for digital marketing campaigns.",
         role: "Founding Engineer",
         period: "2023 – 2026",
         bullets: [
@@ -201,6 +215,8 @@ export const content = {
       {
         slug: "ufpe",
         title: "UFPE — Centro de Informática (CIn)",
+        blurb: "one of the leading computer science research centres in brazil.",
+        site: "https://portal.cin.ufpe.br",
         role: "Computer Technology / Computer Systems",
         period: "jan 2023 – jan 2027",
         bullets: [
@@ -323,6 +339,8 @@ export const content = {
       {
         slug: "stone",
         company: "Stone",
+        blurb: "fintech brasileira — pagamentos, conta pj e crédito para quem empreende.",
+        site: "https://www.stone.com.br",
         role: "Engenheiro de Software",
         period: "set 2026 – atual",
         bullets: [
@@ -336,6 +354,8 @@ export const content = {
       {
         slug: "robbin",
         company: "Robbin",
+        blurb: "infraestrutura de crédito private label para indústrias e distribuidores.",
+        site: "https://robbin.com.br",
         role: "Engenheiro de Software",
         period: "jul 2026 – set 2026",
         bullets: [
@@ -352,6 +372,8 @@ export const content = {
       {
         slug: "amigo-tech",
         company: "Amigo Tech",
+        blurb: "software e pagamentos para clínicas e profissionais de saúde.",
+        site: "https://amigotech.com.br",
         role: "Team Leader",
         period: "set 2025 – mai 2026",
         bullets: [
@@ -371,6 +393,8 @@ export const content = {
       {
         slug: "amigo-tech",
         company: "Amigo Tech",
+        blurb: "software e pagamentos para clínicas e profissionais de saúde.",
+        site: "https://amigotech.com.br",
         role: "Engenheiro de Software",
         period: "set 2024 – mai 2026",
         bullets: [
@@ -391,6 +415,7 @@ export const content = {
       {
         slug: "brightlift",
         company: "Brightlift",
+        blurb: "automação com ia para campanhas de marketing digital.",
         role: "Founding Engineer",
         period: "2023 – 2026",
         bullets: [
@@ -421,6 +446,8 @@ export const content = {
       {
         slug: "ufpe",
         title: "UFPE — Centro de Informática (CIn)",
+        blurb: "um dos principais centros de pesquisa em computação do brasil.",
+        site: "https://portal.cin.ufpe.br",
         role: "Tecnologia da Computação / Sistemas de Computação",
         period: "jan 2023 – jan 2027",
         bullets: [
