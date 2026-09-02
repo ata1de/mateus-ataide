@@ -1,214 +1,338 @@
 export type Lang = "en" | "pt";
 
-export type ProjectMedia =
-  | { type: "image"; src: string; alt?: string }
-  | { type: "video"; src: string; poster?: string };
+/** A headline number pulled out of an experience entry, rendered as a stat grid. */
+export type Stat = {
+  value: string;
+  label: string;
+};
+
+export type Experience = {
+  /** Used to look up /logos/<slug>.png, and as the monogram source when absent. */
+  slug: string;
+  company: string;
+  role: string;
+  period: string;
+  bullets: string[];
+  stats?: Stat[];
+};
 
 export type Project = {
   name: string;
   period: string;
   desc: string;
-  media?: ProjectMedia;
+  link?: { href: string; label: string };
 };
+
+export type Education = {
+  slug: string;
+  title: string;
+  role: string;
+  period: string;
+  bullets: string[];
+};
+
+export const contact = {
+  email: "mateusataide.contact@gmail.com",
+  github: "https://github.com/ata1de",
+  linkedin: "https://linkedin.com/in/mateus-ataide",
+} as const;
 
 export const content = {
   en: {
-    nav: { about: "about", projects: "projects", certifications: "certifications" },
     name: "Mateus Ataide",
-    location: "🇧🇷 recife, pernambuco, brasil",
-    role: "ai product builder @ extreme group (volund) | information systems @ ufpe (cin)",
-    bio: [
-      "software engineer and ai product builder with 3+ years of experience delivering high-impact systems. currently building ai-native agentic pipelines at extreme group (volund), turning months-long projects into weeks. previously led a fintech squad at amigo tech, sustaining systems that process r$60m+/month. focused on golang, node.js/typescript, python, and applied ai (llms, rag and ai agents in production).",
-      "studying information systems at ufpe, one of brazil's top cs schools.",
-      "really interested in meeting new people and learning about their experiences. reach out if you want to chat!",
-    ],
-    reach: "reach out:",
+    location: "Brazil",
+    tagline: "I'm Mateus; software engineer at Stone — payments, and applied ai on the side.",
+    status: "open to chat",
     sections: {
-      metrics: "key metrics",
-      experience: "experience",
-      projects: "projects",
-      education: "education",
-      skills: "skills",
-      certifications: "certifications",
+      about: "About",
+      experience: "Journey",
+      projects: "Projects",
+      education: "Education",
+      skills: "Techstack",
+      certifications: "Certifications",
+      contact: "Contact",
     },
-    metrics: [
-      { label: "monthly volume processed", value: "R$60M+" },
-      { label: "human interaction reduced (ai agents)", value: "−60%" },
-      { label: "projected revenue increase (ecommerce api)", value: "+30%" },
-      { label: "query performance improvement", value: "~85x" },
-      { label: "med (pix dispute) system, delivered", value: "1 week" },
-    ],
+    about: {
+      headline: "I build the systems that decide whether money actually moves",
+      body: [
+        "software engineer with 3+ years building high-criticality financial systems — payment platforms processing r$60m+/month in transactions for thousands of doctors and clinics across brazil. currently at stone.",
+        "most of my work lives in the unglamorous parts: a postgresql query taken from 13s to 150ms, boleto generation from 2 minutes to 100ms, an otp layer guarding r$35m+/month of sensitive operations, a bacen-mandated pix dispute flow shipped in a week.",
+        "alongside that i build with applied ai — llms, rag and agents in production — an agentic slack tool that turned a 30–60min developer task into under 2 minutes of ops self-service, a rag support bot that cut handling time by 40%.",
+        "studying computer technology at ufpe's centro de informática, one of brazil's top cs schools.",
+        "really interested in meeting new people and learning about their experiences. reach out if you want to chat!",
+      ],
+    },
+    contactPrompt: "Got something interesting to say?",
     experience: [
       {
-        title: "extreme group (volund) — ai product builder",
-        period: "jun 2026 – present",
+        slug: "stone",
+        company: "Stone",
+        role: "Software Engineer",
+        period: "sep 2026 – present",
         bullets: [
-          "transform manual projects into ai-native workflows through specialized agents, eliminating human bottlenecks in repetitive development and operational steps.",
-          "contributed to building volund os, an agent creation platform for cross-functional use (commercial, product, c-levels), integrating claude code and cursor sdk to unify models and integrations across the organization.",
-          "integrated a legacy prodesp project from prototype to gcp deploy, reducing human interaction in the development cycle by 60% via ai agent automation.",
+          "building on payment systems that run across roughly 5m pos terminals and reach more than 5m clients, at one of brazil's largest fintechs.",
+        ],
+        stats: [
+          { value: "~5M", label: "POS terminals" },
+          { value: "5M+", label: "Clients reached" },
         ],
       },
       {
-        title: "amigo tech — team lead",
-        period: "nov 2025 – may 2026",
+        slug: "robbin",
+        company: "Robbin",
+        role: "Software Engineer",
+        period: "jul 2026 – sep 2026",
         bullets: [
-          "Led a fintech squad, driving technical decisions, solution planning and product alignment, always focused on ownership and delivering real business impact.",
-          "architected e-commerce integration api (nestjs/typescript + redis) with projected +30% revenue impact",
-          "architected the med (pix dispute) system from scratch in nodejs and angular, delivered in 1 week with automated tests, webhooks and full flow, meeting a critical bacen requirement — impacts 75% of monthly transactions.",
+          "helped build an agentic slack tool for payment reprocessing. the process took 30 to 60 minutes and leaned heavily on developer availability; the operations team now runs it with full autonomy and resolves it in under 2 minutes.",
+          "audited aws spend and scoped a projected reduction of over 50% (~r$30k/year) — moving log retention to s3 and right-sizing ecs services.",
+          "moved database migrations into a ci/cd action, removing over 70% of the manual work previously done by hand through aws.",
+        ],
+        stats: [
+          { value: "< 2 min", label: "Payment reprocessing, was 30–60min" },
+          { value: "−50%", label: "Projected AWS saving (~R$30k/year)" },
+          { value: "−70%", label: "Manual migration work" },
+        ],
+      },
+      {
+        slug: "amigo-tech",
+        company: "Amigo Tech",
+        role: "Team Leader",
+        period: "sep 2025 – may 2026",
+        bullets: [
+          "led a fintech squad building payment solutions, driving technical decisions, solution planning and product alignment — and mentoring engineers through code reviews, 1:1s and continuous feedback.",
+          "designed and launched a partner api for e-commerce integrations enabling flexible multi-payment checkout — pix qr code and installment card payments with dynamic interest calculation — with redis-backed rate limiting and ip controls in nestjs. projected +30% revenue.",
+          "cut payment-slip (boleto) generation from over 2 minutes to 100ms by moving installment creation to an asynchronous model.",
+          "architected the med (pix dispute) system from scratch, delivered in 1 week with unit tests, webhooks and a complete refund flow, meeting a critical bacen requirement — impacts 75% of monthly transactions.",
+          "contributed to features sustaining an average 17% monthly growth in transaction volume across the payment platform.",
+          "led the migration of a critical pipeline from node.js to go, cutting processing down to ~4s for 20,000 records per run.",
           "operated cloud infrastructure on aws (ecs, s3, sqs, sns, lambda, cloudwatch) with authentication, authorization and access control across payment apis.",
           "used claude code daily as an agentic pipeline for planning, implementation, review and debugging.",
         ],
-      },
-      {
-        title: "amigo tech — software engineer",
-        period: "sep 2024 – nov 2025",
-        bullets: [
-          "built and maintained backend apis and systems in nestjs/typescript and go for a platform processing r$60m+/month, with authentication, authorization and api security best practices.",
-          "reduced critical postgresql query latency from 13s to 150ms (~85x) via data analysis and profiling-based optimization.",
-          "implemented observability with grafana and datadog — metrics, logs and alerts — ensuring 99% slo and supporting production experiment analysis.",
+        stats: [
+          { value: "+30%", label: "Projected revenue" },
+          { value: "100ms", label: "Boleto generation, from 2min" },
+          { value: "1 week", label: "MED system shipped" },
+          { value: "+17%", label: "Monthly volume growth" },
         ],
       },
       {
-        title: "brightlift — founding engineer",
+        slug: "amigo-tech",
+        company: "Amigo Tech",
+        role: "Software Engineer",
+        period: "sep 2024 – may 2026",
+        bullets: [
+          "drove the evolution of amigo pay, the financial platform inside the amigo ecosystem, building and integrating high-impact features in nestjs/typescript and go on a platform processing 100m+ tpv.",
+          "reduced accounts-receivable query latency from 13s to 150ms (~85x) by optimizing postgresql queries, execution plans and indexes over high-volume financial datasets.",
+          "designed and built from scratch a secure otp validation api supporting r$35m+/month in transaction volume — the first security layer for every sensitive payment operation, with session-based validation and attempt blocking against fraud.",
+          "implemented reliable payment webhook flows, improving asynchronous transaction updates and reconciliation accuracy across the platform.",
+          "enhanced pos systems with transaction history and automated email reporting in react native and node.js, improving merchant visibility.",
+          "built an ai customer support bot in python using rag + the openai api — cut support handling time by 40% in production.",
+          "implemented observability with grafana and datadog — metrics, logs and alerts — ensuring 99% slo and supporting production experiment analysis.",
+        ],
+        stats: [
+          { value: "R$60M+", label: "Processed monthly" },
+          { value: "~85x", label: "Query speedup" },
+          { value: "R$35M+", label: "Secured by the OTP layer" },
+        ],
+      },
+      {
+        slug: "brightlift",
+        company: "Brightlift",
+        role: "Founding Engineer",
         period: "2023 – 2026",
         bullets: [
-          "built and maintained ai agents integrated with llm apis (openai, gemini), implementing rag, function calling and streaming with focus on maximizing value per token in automation workflows.",
+          "built and maintained ai agents integrated with llm apis (openai, gemini), implementing rag, mcp, function calling and streaming with focus on maximizing value per token in automation workflows.",
           "built llm evaluation and benchmarking infrastructure for model comparison without altering the application layer — enabling data-driven decisions.",
           "developed backend with fastapi (python), scraping + nlp pipeline for large-scale data analysis in mongodb, containerized with docker + ci/cd on aws.",
         ],
       },
-    ],
+    ] as Experience[],
     projects: [
       {
-        name: "gatewatch",
+        name: "Gatewatch",
         period: "2025 – 2026",
         desc: "real-time market data platform in continuous development for 3+ years. focus on high-performance data ingestion, processing and visualization.",
       },
       {
-        name: "brightlift",
+        name: "Brightlift",
         period: "2023 – 2026",
         desc: "ai-powered digital campaign automation platform. built with fastapi + llms and react + vite. features: ai agent orchestration for creative generation, social media scraping pipeline with nlp sentiment analysis for market signal classification by ticker, mongodb for raw data storage. integrated with google ads and meta.",
       },
       {
-        name: "rekon",
+        name: "Rekon",
         period: "2024",
         desc: "real-time tracking and analytics platform to monitor assets and events, with operational visibility and live insights.",
-      },
-      {
-        name: "contract automation api",
-        period: "2024",
-        desc: "go backend for contract generation automation. applied idiomatic concurrency patterns with goroutines and channels. containerized with docker for environment parity.",
       },
     ] as Project[],
     education: [
       {
-        title: "ufpe — centro de informática (cin), information systems",
-        period: "2023 – present, recife, brasil",
+        slug: "ufpe",
+        title: "UFPE — Centro de Informática (CIn)",
+        role: "Computer Technology / Computer Systems",
+        period: "jan 2023 – jan 2027",
         bullets: [
           "one of the top cs teaching and research centers in brazil and latin america.",
           "key subjects: algorithms, data structures, operating systems, oop, software engineering, systems architecture, ai, databases.",
+          "teaching assistant since 2023 for algorithms & data structures and programming logic — helping students with problem solving, complexity analysis and computational thinking.",
         ],
       },
-      {
-        title: "ufpe — teaching assistant",
-        period: "2023 – present",
-        bullets: [
-          "algorithms & data structures and programming logic",
-          "helped students with problem solving, complexity analysis and computational thinking",
-        ],
-      },
-    ],
+    ] as Education[],
     skills: [
-      { label: "languages", items: "golang, node.js, typescript, python, sql" },
-      { label: "frontend & mobile", items: "react, angular, react native" },
+      { label: "Languages", items: ["golang", "node.js", "typescript", "python", "sql"] },
+      { label: "Frontend & mobile", items: ["react", "angular", "react native"] },
       {
-        label: "architecture",
-        items: "rest apis, distributed systems, microservices, async processing, api gateway",
+        label: "Architecture",
+        items: [
+          "rest apis",
+          "distributed systems",
+          "microservices",
+          "async processing",
+          "api gateway",
+        ],
       },
       {
-        label: "ai & llms",
-        items:
-          "rag, ai agents, llm orchestration (openai, gemini, claude), mcp, function calling, streaming, nlp, claude code",
+        label: "AI & LLMs",
+        items: [
+          "rag",
+          "ai agents",
+          "llm orchestration",
+          "openai",
+          "gemini",
+          "claude",
+          "mcp",
+          "function calling",
+          "streaming",
+          "nlp",
+          "claude code",
+        ],
       },
       {
-        label: "cloud",
-        items:
-          "aws (ecs, s3, sqs, sns, lambda, cloudwatch, parameter store), gcp, linux (ubuntu/debian)",
+        label: "Cloud",
+        items: ["aws", "ecs", "s3", "sqs", "sns", "lambda", "cloudwatch", "gcp", "docker", "linux"],
       },
-      { label: "databases", items: "postgresql, mysql, mongodb, redis" },
-      { label: "quality", items: "automated tests, jest, ci/cd, code review, git" },
-      { label: "observability", items: "grafana, datadog, cloudwatch, structured logging, slos" },
+      { label: "Databases", items: ["postgresql", "mysql", "mongodb", "redis"] },
+      { label: "Quality", items: ["automated tests", "jest", "ci/cd", "code review", "git"] },
+      {
+        label: "Observability",
+        items: ["grafana", "datadog", "cloudwatch", "structured logging", "slos"],
+      },
+      {
+        label: "Spoken",
+        items: ["🇧🇷 portuguese (native)", "🇺🇸 english (professional)", "🇪🇸 spanish (professional)"],
+      },
     ],
     certifications: [
       "Getting into the Serverless Mindset",
       "AWS Lambda Foundations",
       "Introduction to AWS Lambda",
-      "SQL Intermediate",
+      "SQL/Sequelize",
       "Nest: The Complete Developer's Guide",
       "SQL and PostgreSQL: The Complete Developer's Guide",
     ],
   },
+
   pt: {
-    nav: { about: "sobre", projects: "projetos", certifications: "certificações" },
     name: "Mateus Ataide",
-    location: "🇧🇷 recife, pernambuco, brasil",
-    role: "ai product builder @ extreme group (volund) | sistemas de informação @ ufpe (cin)",
-    bio: [
-      "engenheiro de software e ai product builder com 3+ anos de experiência entregando sistemas de alto impacto. atualmente construindo pipelines agênticos ai-native na extreme group (volund), transformando projetos de meses em semanas. anteriormente liderei uma squad fintech na amigo tech, sustentando sistemas que processam r$60m+/mês. focado em golang, node.js/typescript, python e ia aplicada (llms, rag e agentes de ia em produção).",
-      "estudando sistemas de informação na ufpe, uma das melhores escolas de cs do brasil.",
-      "tenho muito interesse em conhecer pessoas novas e aprender sobre suas experiências. me chama se quiser conversar!",
-    ],
-    reach: "contato:",
+    location: "Brasil",
+    tagline:
+      "Sou o Mateus; engenheiro de software na Stone — pagamentos, e ia aplicada em paralelo.",
+    status: "aberto a conversar",
     sections: {
-      metrics: "métricas",
-      experience: "experiência",
-      projects: "projetos",
-      education: "educação",
-      skills: "habilidades",
-      certifications: "certificações",
+      about: "Sobre",
+      experience: "Jornada",
+      projects: "Projetos",
+      education: "Educação",
+      skills: "Techstack",
+      certifications: "Certificações",
+      contact: "Contato",
     },
-    metrics: [
-      { label: "volume mensal processado", value: "R$60M+" },
-      { label: "redução na interação humana (agentes de ia)", value: "−60%" },
-      { label: "aumento de receita projetado (api de ecommerce)", value: "+30%" },
-      { label: "melhoria de performance em queries", value: "~85x" },
-      { label: "sistema med (contestação de pix), entregue em", value: "1 semana" },
-      { label: "throughput do pipeline go, 20 mil registros", value: "4s" },
-    ],
+    about: {
+      headline: "Construo os sistemas que decidem se o dinheiro realmente sai do lugar",
+      body: [
+        "engenheiro de software com 3+ anos construindo sistemas financeiros de alta criticidade — plataformas de pagamento que processam r$60m+/mês em transações para milhares de médicos e clínicas no brasil. atualmente na stone.",
+        "meu trabalho mora nas partes pouco glamourosas: uma query no postgresql que saiu de 13s para 150ms, geração de boleto de 2 minutos para 100ms, uma camada de otp protegendo r$35m+/mês em operações sensíveis, um fluxo de contestação de pix exigido pelo bacen entregue em uma semana.",
+        "em paralelo construo com ia aplicada — llms, rag e agentes em produção — uma tool agêntica no slack que transformou uma tarefa de 30–60min de dev em menos de 2 minutos na mão do operacional, um bot de atendimento com rag que cortou 40% do tempo de resposta.",
+        "estudando tecnologia da computação no centro de informática da ufpe, uma das melhores escolas de cs do brasil.",
+        "tenho muito interesse em conhecer pessoas novas e aprender sobre suas experiências. me chama se quiser conversar!",
+      ],
+    },
+    contactPrompt: "Tem algo interessante pra dizer?",
     experience: [
       {
-        title: "extreme group (volund) — ai product builder",
-        period: "jun 2026 – atual",
+        slug: "stone",
+        company: "Stone",
+        role: "Engenheiro de Software",
+        period: "set 2026 – atual",
         bullets: [
-          "transformo projetos manuais em fluxos ai-native através da criação de agentes especializados, eliminando gargalos humanos em etapas repetitivas de desenvolvimento e operação.",
-          "participei da construção do volund os, plataforma de criação de agentes para uso transversal (comercial, produto e c-levels), integrando claude code e o sdk do cursor para unificar modelos e integrações em toda a organização.",
-          "integrei projeto legado do prodesp da prototipação ao deploy em gcp, reduzindo em 60% a interação humana no ciclo de desenvolvimento via automação com agentes de ia.",
+          "construindo sistemas de pagamento que rodam em cerca de 5 milhões de terminais pos e alcançam mais de 5 milhões de clientes, em uma das maiores fintechs do brasil.",
+        ],
+        stats: [
+          { value: "~5M", label: "Terminais POS" },
+          { value: "5M+", label: "Clientes alcançados" },
         ],
       },
       {
-        title: "amigo tech — team lead",
-        period: "nov 2025 – mai 2026",
+        slug: "robbin",
+        company: "Robbin",
+        role: "Engenheiro de Software",
+        period: "jul 2026 – set 2026",
         bullets: [
-          "Liderei uma squad fintech, conduzindo decisões técnicas, planejamento de soluções e alinhamento de produto, sempre focado em ownership e entrega de impacto real no negócio.",
-          "arquitetei api de integração com e-commerce (nestjs/typescript + redis) com impacto projetado de +30% em receita",
-          "arquitetei do zero o sistema de med (contestação de pix) em nodejs e angular, entregue em 1 semana com testes automatizados, webhooks e fluxo completo, atendendo exigência crítica do bacen — impacta 75% das transações mensais.",
+          "ajudei a construir uma tool agêntica no slack para reprocessamento de pagamento. o processo levava de 30 a 60 minutos e tinha uma dependência muito grande dos desenvolvedores; hoje o operacional tem 100% de autonomia e resolve em menos de 2 minutos.",
+          "analisei os custos de aws e provisionei uma redução projetada de mais de 50% (~r$30 mil/ano) — movendo a retenção de logs para o s3 e reduzindo custos em serviços no ecs.",
+          "movi as migrations para uma action no ci/cd, eliminando mais de 70% do trabalho manual que antes era feito na mão pela aws.",
+        ],
+        stats: [
+          { value: "< 2 min", label: "Reprocessamento, era 30–60min" },
+          { value: "−50%", label: "Economia projetada de AWS (~R$30 mil/ano)" },
+          { value: "−70%", label: "Trabalho manual de migration" },
+        ],
+      },
+      {
+        slug: "amigo-tech",
+        company: "Amigo Tech",
+        role: "Team Leader",
+        period: "set 2025 – mai 2026",
+        bullets: [
+          "liderei uma squad fintech de soluções de pagamento, conduzindo decisões técnicas, planejamento de soluções e alinhamento de produto — e mentorando engenheiros via code review, 1:1s e feedback contínuo.",
+          "projetei e lancei uma api de parceiros para integrações com e-commerce, viabilizando checkout multi-pagamento flexível — pix qr code e cartão parcelado com cálculo dinâmico de juros — com rate limiting via redis e controle de ip em nestjs. impacto projetado de +30% em receita.",
+          "reduzi a geração de boleto de mais de 2 minutos para 100ms ao migrar a criação de parcelas para um modelo assíncrono.",
+          "arquitetei do zero o sistema de med (contestação de pix), entregue em 1 semana com testes unitários, webhooks e fluxo completo de estorno, atendendo exigência crítica do bacen — impacta 75% das transações mensais.",
+          "contribuí com features que sustentaram um crescimento médio de 17% ao mês no volume transacionado da plataforma.",
           "liderei migração de pipeline crítico de node.js para go, reduzindo processamento para ~4s com 20.000 registros por execução.",
           "operei infraestrutura em nuvem na aws (ecs, s3, sqs, sns, lambda, cloudwatch) com autenticação, autorização e controle de acesso nas apis de pagamento.",
           "utilizei claude code diariamente como esteira agêntica para planejamento, implementação, revisão e debugging.",
         ],
-      },
-      {
-        title: "amigo tech — engenheiro de software",
-        period: "set 2024 – nov 2025",
-        bullets: [
-          "desenvolvi e mantive apis e sistemas distribuídos de backend em nestjs/typescript e go para plataforma processando r$60m+/mês, com autenticação, autorização e boas práticas de segurança.",
-          "desenvolvi bot de atendimento com ia em python usando rag + api openai — reduziu tempo de atendimento em 40% em produção.",
-          "reduzi latência de consultas críticas no postgresql de 13s para 150ms (~85x) via otimização baseada em análise de dados e profiling.",
-          "implementei observabilidade com grafana e datadog — métricas, logs e alertas — garantindo 99% de slo e suporte à análise de experimentos em produção.",
+        stats: [
+          { value: "+30%", label: "Receita projetada" },
+          { value: "100ms", label: "Geração de boleto, de 2min" },
+          { value: "1 semana", label: "Sistema MED entregue" },
+          { value: "+17%", label: "Crescimento mensal do volume" },
         ],
       },
       {
-        title: "brightlift — founding engineer",
+        slug: "amigo-tech",
+        company: "Amigo Tech",
+        role: "Engenheiro de Software",
+        period: "set 2024 – mai 2026",
+        bullets: [
+          "conduzi a evolução do amigo pay, a plataforma financeira do ecossistema amigo, construindo e integrando features de alto impacto em nestjs/typescript e go numa plataforma que processa 100m+ de tpv.",
+          "reduzi a latência de consultas de contas a receber de 13s para 150ms (~85x) otimizando queries, planos de execução e índices no postgresql sobre bases financeiras de alto volume.",
+          "projetei e construí do zero uma api de validação por otp sustentando r$35m+/mês em volume transacionado — primeira camada de segurança de toda operação de pagamento sensível, com validação por sessão e bloqueio de tentativas contra fraude.",
+          "implementei fluxos confiáveis de webhook de pagamento, melhorando as atualizações assíncronas de transação e a precisão da conciliação na plataforma.",
+          "evoluí sistemas de pos com histórico de transações e relatórios automáticos por e-mail em react native e node.js, ampliando a visibilidade do lojista.",
+          "desenvolvi bot de atendimento com ia em python usando rag + api openai — reduziu tempo de atendimento em 40% em produção.",
+          "implementei observabilidade com grafana e datadog — métricas, logs e alertas — garantindo 99% de slo e suporte à análise de experimentos em produção.",
+        ],
+        stats: [
+          { value: "R$60M+", label: "Processados por mês" },
+          { value: "~85x", label: "Ganho em queries" },
+          { value: "R$35M+", label: "Protegidos pela camada de OTP" },
+        ],
+      },
+      {
+        slug: "brightlift",
+        company: "Brightlift",
+        role: "Founding Engineer",
         period: "2023 – 2026",
         bullets: [
           "desenvolvi e mantive agentes de ia integrados a apis de llms (openai, gemini), implementando rag, mcp, function calling e streaming com foco em maximizar valor por token em fluxos de automação.",
@@ -216,79 +340,89 @@ export const content = {
           "desenvolvi backend com fastapi (python), pipeline de scraping + nlp para análise de grandes volumes de dados em mongodb, containerizado com docker + ci/cd na aws.",
         ],
       },
-    ],
+    ] as Experience[],
     projects: [
       {
-        name: "gatewatch",
+        name: "Gatewatch",
         period: "2025 – 2026",
         desc: "plataforma de dados de mercado em tempo real em desenvolvimento contínuo há 3+ anos. foco em ingestão, processamento e visualização de dados de alta performance.",
       },
       {
-        name: "brightlift",
+        name: "Brightlift",
         period: "2023 – 2026",
         desc: "plataforma de automação de campanhas digitais com ia. construída com fastapi + llms e react + vite. features: orquestração de agentes de ia para geração de criativos, pipeline de scraping de redes sociais com análise de sentimento via nlp para classificação de sinais de mercado por ticker, mongodb para armazenamento bruto. integrado com google ads e meta.",
       },
       {
-        name: "rekon",
+        name: "Rekon",
         period: "2024",
-        desc: "criei uma plataforma de rastreamento e analytics em tempo real para monitorar ativos e eventos, com visibilidade operacional e insights ao vivo.",
-      },
-      {
-        name: "reembolso ai",
-        period: "2024",
-        desc: "criei um sistema de gestão de despesas com ia: parsing de recibos, fluxos de aprovação e insights financeiros em tempo real para melhor controle e reembolsos mais rápidos.",
-      },
-      {
-        name: "contract automation api",
-        period: "2024",
-        desc: "backend em go para automação de geração de contratos. apliquei padrões idiomáticos de concorrência com goroutines e channels. containerizado com docker para paridade entre ambientes.",
+        desc: "plataforma de rastreamento e analytics em tempo real para monitorar ativos e eventos, com visibilidade operacional e insights ao vivo.",
       },
     ] as Project[],
     education: [
       {
-        title: "ufpe — centro de informática (cin), sistemas de informação",
-        period: "2023 – atual, recife, brasil",
+        slug: "ufpe",
+        title: "UFPE — Centro de Informática (CIn)",
+        role: "Tecnologia da Computação / Sistemas de Computação",
+        period: "jan 2023 – jan 2027",
         bullets: [
           "um dos principais centros de ensino e pesquisa em cs do brasil e da américa latina.",
           "matérias-chave: algoritmos, estruturas de dados, sistemas operacionais, poo, engenharia de software, arquitetura de sistemas, ia, bancos de dados.",
+          "monitor desde 2023 de algoritmos & estruturas de dados e lógica de programação — ajudando estudantes com resolução de problemas, análise de complexidade e pensamento computacional.",
         ],
       },
-      {
-        title: "ufpe — monitor (teaching assistant)",
-        period: "2023 – atual",
-        bullets: [
-          "algoritmos & estruturas de dados e lógica de programação",
-          "ajudei estudantes com resolução de problemas, análise de complexidade e pensamento computacional",
-        ],
-      },
-    ],
+    ] as Education[],
     skills: [
-      { label: "linguagens", items: "golang, node.js, typescript, python, sql" },
-      { label: "frontend & mobile", items: "react, angular, react native" },
+      { label: "Linguagens", items: ["golang", "node.js", "typescript", "python", "sql"] },
+      { label: "Frontend & mobile", items: ["react", "angular", "react native"] },
       {
-        label: "arquitetura",
-        items:
-          "rest apis, sistemas distribuídos, microsserviços, processamento assíncrono, api gateway",
+        label: "Arquitetura",
+        items: [
+          "rest apis",
+          "sistemas distribuídos",
+          "microsserviços",
+          "processamento assíncrono",
+          "api gateway",
+        ],
       },
       {
-        label: "ia & llms",
-        items:
-          "rag, agentes de ia, orquestração de llm (openai, gemini, claude), mcp, function calling, streaming, nlp, claude code",
+        label: "IA & LLMs",
+        items: [
+          "rag",
+          "agentes de ia",
+          "orquestração de llm",
+          "openai",
+          "gemini",
+          "claude",
+          "mcp",
+          "function calling",
+          "streaming",
+          "nlp",
+          "claude code",
+        ],
       },
       {
-        label: "cloud",
-        items:
-          "aws (ecs, s3, sqs, sns, lambda, cloudwatch, parameter store), gcp, linux (ubuntu/debian)",
+        label: "Cloud",
+        items: ["aws", "ecs", "s3", "sqs", "sns", "lambda", "cloudwatch", "gcp", "docker", "linux"],
       },
-      { label: "bancos de dados", items: "postgresql, mysql, mongodb, redis" },
-      { label: "qualidade", items: "testes automatizados, jest, ci/cd, code review, git" },
-      { label: "observabilidade", items: "grafana, datadog, cloudwatch, logs estruturados, slos" },
+      { label: "Bancos de dados", items: ["postgresql", "mysql", "mongodb", "redis"] },
+      {
+        label: "Qualidade",
+        items: ["testes automatizados", "jest", "ci/cd", "code review", "git"],
+      },
+      {
+        label: "Observabilidade",
+        items: ["grafana", "datadog", "cloudwatch", "logs estruturados", "slos"],
+      },
+      {
+        label: "Idiomas",
+        items: ["🇧🇷 português (nativo)", "🇺🇸 inglês (profissional)", "🇪🇸 espanhol (profissional)"],
+      },
     ],
     certifications: [
       "Getting into the Serverless Mindset",
       "AWS Lambda Foundations",
       "Introduction to AWS Lambda",
-      "SQL Intermediate",
+      "SQL/Sequelize",
       "Nest: The Complete Developer's Guide",
       "SQL and PostgreSQL: The Complete Developer's Guide",
     ],
