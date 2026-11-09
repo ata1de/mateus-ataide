@@ -95,6 +95,14 @@ function Footer() {
           LinkedIn
         </a>
         <a
+          href={contact.x}
+          target="_blank"
+          rel="noreferrer"
+          className="transition-colors hover:text-ink"
+        >
+          X
+        </a>
+        <a
           href={contact.medium}
           target="_blank"
           rel="noreferrer"

@@ -4,6 +4,7 @@ export const contact = {
   email: "mateusataide.contact@gmail.com",
   github: "https://github.com/ata1de",
   linkedin: "https://linkedin.com/in/mateus-ataide",
+  x: "https://x.com/ata1de",
   medium: "https://medium.com/@mateusataide05",
 } as const;
 
@@ -47,6 +48,17 @@ export type Shot = {
   backdrop?: string;
 };
 
+/**
+ * When each stint ran, as "YYYY-MM". No `to` means it's still going. The home
+ * timeline draws these on one shared axis.
+ */
+export const spans: Record<string, { from: string; to?: string }> = {
+  stone: { from: "2026-09" },
+  robbin: { from: "2026-07", to: "2026-09" },
+  "amigo-tech": { from: "2024-09", to: "2026-05" },
+  ufpe: { from: "2023-01" },
+};
+
 type Copy = {
   greeting: (day: number) => string;
   headline: { before: string; mark: string; after: string };
@@ -55,6 +67,8 @@ type Copy = {
   lists: { work: string; school: string; writing: string; reading: string };
   reads: { title: string; author: string; cover: string; url: string }[];
   allWriting: string;
+  /** Tag on the stint that is still going. */
+  now: string;
   back: string;
   next: string;
   visit: string;
@@ -105,6 +119,7 @@ export const copy: Record<Lang, Copy> = {
       },
     ],
     allWriting: "Everything on Medium",
+    now: "Now",
     back: "Mateus",
     next: "Next",
     visit: "Visit",
@@ -260,7 +275,7 @@ export const copy: Record<Lang, Copy> = {
         slug: "ufpe",
         kind: "school",
         name: "UFPE",
-        years: "2023 – 2027",
+        years: "2023 – 2026",
         site: "https://portal.cin.ufpe.br",
         blurb:
           "Centro de Informática — one of the leading computer science schools in Latin America.",
@@ -307,6 +322,7 @@ export const copy: Record<Lang, Copy> = {
       },
     ],
     allWriting: "Tudo no Medium",
+    now: "Atual",
     back: "Mateus",
     next: "Próximo",
     visit: "Visitar",
@@ -462,7 +478,7 @@ export const copy: Record<Lang, Copy> = {
         slug: "ufpe",
         kind: "school",
         name: "UFPE",
-        years: "2023 – 2027",
+        years: "2023 – 2026",
         site: "https://portal.cin.ufpe.br",
         blurb:
           "Centro de Informática — uma das principais escolas de computação da América Latina.",

@@ -1,8 +1,8 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 import { Page } from "@/components/Chrome";
-import { contact, type Entry, type Kind } from "@/lib/content";
+import { contact, spans, type Entry, type Kind } from "@/lib/content";
 import { getPosts } from "@/lib/medium";
 import { useCopy, usePrefs } from "@/lib/prefs";
 
@@ -62,10 +62,14 @@ function Home() {
         </p>
       </div>
 
-      <div className="mt-16 grid grid-cols-2 gap-x-8 gap-y-10">
-        <EntryList label={t.lists.work} entries={of("work")} />
-        <EntryList label={t.lists.school} entries={of("school")} />
-      </div>
+      <Timeline
+        className="mt-16"
+        groups={[
+          { label: t.lists.work, entries: of("work") },
+          { label: t.lists.school, entries: of("school") },
+        ]}
+        nowLabel={t.now}
+      />
 
       <section className="mt-12">
         <h2 className="text-sm text-muted">{t.lists.reading}</h2>
@@ -124,26 +128,139 @@ function Home() {
   );
 }
 
-function EntryList({ label, entries }: { label: string; entries: Entry[] }) {
+const AXIS_START = monthIndex("2023-01");
+
+function monthIndex(ym: string) {
+  const [year, month] = ym.split("-").map(Number);
+  return year * 12 + (month - 1);
+}
+
+/**
+ * Work and school on one shared time axis, so the dates read at a glance. The
+ * stint that is still going is drawn in marker yellow; past ones in grey.
+ */
+function Timeline({
+  groups,
+  nowLabel,
+  className = "",
+}: {
+  groups: { label: string; entries: Entry[] }[];
+  nowLabel: string;
+  className?: string;
+}) {
+  const today = new Date();
+  // One month past today, so an ongoing bar visibly runs up to the edge.
+  const end = today.getFullYear() * 12 + today.getMonth() + 1;
+  const pct = (month: number) => ((month - AXIS_START) / (end - AXIS_START)) * 100;
+
+  const firstYear = Math.floor(AXIS_START / 12);
+  const years = Array.from(
+    { length: Math.floor(end / 12) - firstYear + 1 },
+    (_, i) => firstYear + i,
+  );
+
+  // Bars stay collapsed until the timeline is on screen, then grow in order.
+  const ref = useRef<HTMLDivElement>(null);
+  const [shown, setShown] = useState(false);
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+  let order = 0;
+
+  const row =
+    "grid grid-cols-[7.5rem_1fr_4rem] items-center gap-x-3 sm:grid-cols-[10rem_1fr_5rem] sm:gap-x-4";
+
   return (
-    <section>
-      <h2 className="text-sm text-muted">{label}</h2>
-      <ul className="mt-3 space-y-2">
-        {entries.map((entry) => (
-          <li key={entry.slug} className="flex items-center gap-2.5">
-            <img
-              src={`/logos/${entry.slug}.png`}
-              alt=""
-              width={20}
-              height={20}
-              className="size-5 shrink-0 rounded-[5px] border border-rule bg-white object-cover"
-            />
-            <Link to="/$slug" params={{ slug: entry.slug }} className="hl text-base text-ink">
-              {entry.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <div ref={ref} className={className} data-shown={shown || undefined}>
+      {groups.map((group, g) => (
+        <section key={group.label} className={g > 0 ? "mt-8" : undefined}>
+          <h2 className="text-sm text-muted">{group.label}</h2>
+          <ul className="mt-3 space-y-2">
+            {group.entries.map((entry) => {
+              const span = spans[entry.slug];
+              const ongoing = !span?.to;
+              const current = ongoing && entry.kind === "work";
+              const from = span ? pct(monthIndex(span.from)) : 0;
+              const to = span ? pct(span.to ? monthIndex(span.to) + 1 : end) : 0;
+              return (
+                <li key={entry.slug} className={row}>
+                  <span className="flex min-w-0 items-center gap-2.5">
+                    <img
+                      src={`/logos/${entry.slug}.png`}
+                      alt=""
+                      width={20}
+                      height={20}
+                      className="size-5 shrink-0 rounded-[5px] border border-rule bg-white object-cover"
+                    />
+                    <Link
+                      to="/$slug"
+                      params={{ slug: entry.slug }}
+                      className="hl truncate text-base text-ink"
+                    >
+                      {entry.name}
+                    </Link>
+                  </span>
+                  <span className="relative h-5" aria-hidden>
+                    <span className="absolute inset-x-0 top-1/2 h-px bg-rule" />
+                    {span && (
+                      <span
+                        className={`bar absolute top-[7px] h-1.5 min-w-1.5 rounded-full ${
+                          current ? "bg-marker" : "bg-muted/45"
+                        }`}
+                        style={
+                          {
+                            left: `${from}%`,
+                            width: `${to - from}%`,
+                            "--d": `${0.12 * order++}s`,
+                          } as CSSProperties
+                        }
+                      />
+                    )}
+                  </span>
+                  <span className="text-right text-xs whitespace-nowrap text-muted tabular-nums sm:text-sm">
+                    {current ? (
+                      <span className="rounded-[3px] bg-marker px-1.5 py-0.5 text-xs font-medium text-[#191918]">
+                        {nowLabel}
+                      </span>
+                    ) : (
+                      entry.years.replace(/\s*–\s*/, "–")
+                    )}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))}
+      <div className={`${row} mt-2`} aria-hidden>
+        <span />
+        <span className="relative h-4 text-xs text-muted tabular-nums">
+          {years.map((year) => (
+            <span
+              key={year}
+              className={`absolute top-0 ${year === firstYear ? "" : "-translate-x-1/2"} ${
+                (year - firstYear) % 2 ? "hidden sm:inline" : ""
+              }`}
+              style={{ left: `${pct(year * 12)}%` }}
+            >
+              {`’${String(year).slice(2)}`}
+            </span>
+          ))}
+        </span>
+        <span />
+      </div>
+    </div>
   );
 }

@@ -162,6 +162,23 @@
   animation: rise 0.5s ease-out both;
 }
 
+/* Timeline bars draw themselves left to right, like a marker stroke, once the
+   timeline scrolls into view. `--d` staggers them row by row. */
+.bar {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+[data-shown] .bar {
+  animation: bar-grow 0.9s cubic-bezier(0.5, 0.1, 0.2, 1) var(--d, 0s) forwards;
+}
+
+@keyframes bar-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
 /* The custom marker cursor replaces the system one on fine pointers only. */
 @media (pointer: fine) {
   html.has-marker,
@@ -227,6 +244,12 @@
 
   .rise {
     animation: none;
+  }
+
+  .bar,
+  [data-shown] .bar {
+    animation: none;
+    transform: none;
   }
 
   .hl {
