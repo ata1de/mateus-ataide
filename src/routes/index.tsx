@@ -1,30 +1,24 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { Link, createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 
-import { AboutBody } from "@/components/AboutBody";
-import { ChipGrid } from "@/components/ChipGrid";
-import { ContactFooter } from "@/components/ContactFooter";
-import { Hero } from "@/components/Hero";
-import { JourneyEntry } from "@/components/JourneyEntry";
-import { ProjectCard } from "@/components/ProjectCard";
-import { PostCard } from "@/components/PostCard";
-import { Section } from "@/components/Section";
+import { Page } from "@/components/Chrome";
+import { contact, type Entry, type Kind } from "@/lib/content";
 import { getPosts } from "@/lib/medium";
-import { content, type Lang } from "@/lib/portfolio-content";
+import { useCopy, usePrefs } from "@/lib/prefs";
 
 const SITE_URL = "https://mateusataide.com/";
 
 const DESCRIPTION =
-  "software engineer at stone, in brasil. high-criticality payment systems processing R$60M+/month — node.js/typescript, golang, python, postgresql, aws, and applied ai.";
+  "Mateus Ataide, a software engineer from Brazil building payments at Stone — and applied AI on the side.";
 
 export const Route = createFileRoute("/")({
-  component: Portfolio,
+  component: Home,
   loader: () => getPosts(),
   head: () => ({
     meta: [
-      { title: "Mateus Ataide — software engineer" },
+      { title: "Mateus Ataide" },
       { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: "Mateus Ataide — software engineer" },
+      { property: "og:title", content: "Mateus Ataide" },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: SITE_URL },
     ],
@@ -32,109 +26,124 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-function Portfolio() {
-  const [lang, setLang] = useState<Lang>("en");
+function Home() {
+  const t = useCopy();
+  const { lang } = usePrefs();
   const posts = Route.useLoaderData();
-  const t = content[lang];
+
+  // The weekday depends on the visitor's clock, so it's only known after mount.
+  const [day, setDay] = useState<number | null>(null);
+  useEffect(() => setDay(new Date().getDay()), []);
+
+  const of = (kind: Kind) => t.entries.filter((entry) => entry.kind === kind);
 
   return (
-    <main className="mx-auto w-full max-w-[750px] px-5 pt-10 pb-20 sm:pt-16">
-      <Hero
-        name={t.name}
-        location={t.location}
-        tagline={t.tagline}
-        lang={lang}
-        onLangChange={setLang}
-      />
+    <Page>
+      <p className="h-5 text-sm text-muted" aria-hidden={day === null}>
+        {day !== null && <span className="rise inline-block">{t.greeting(day)}</span>}
+      </p>
 
-      {/* Keyed on the language so switching re-runs the entrance animation. */}
-      <div key={lang} className="animate-fade-in mt-20 space-y-20 sm:mt-24 sm:space-y-24">
-        <Section id="about" title={t.sections.about}>
-          <p className="text-xl leading-snug font-semibold tracking-[-0.02em] text-ink">
-            {t.about.headline}
-          </p>
-          <div className="mt-5">
-            <AboutBody blocks={t.about.body} />
-          </div>
-        </Section>
+      <h1 className="mt-4 max-w-[16ch] text-display leading-[1.05] font-medium tracking-[-0.035em] text-ink">
+        {t.headline.before}
+        <span className="mark-in">{t.headline.mark}</span>
+        {t.headline.after}
+      </h1>
 
-        <Section id="experience" title={t.sections.experience}>
-          <div className="space-y-12">
-            {t.experience.map((job) => (
-              <JourneyEntry
-                key={`${job.company}-${job.role}`}
-                slug={job.slug}
-                subject={job.company}
-                blurb={job.blurb}
-                site={job.site}
-                role={job.role}
-                period={job.period}
-                bullets={job.bullets}
-                stats={job.stats}
-              />
-            ))}
-          </div>
-        </Section>
-
-        <Section id="projects" title={t.sections.projects}>
-          <div className="space-y-4">
-            {t.projects.map((project) => (
-              <ProjectCard key={project.name} project={project} />
-            ))}
-          </div>
-        </Section>
-
-        {posts.length > 0 && (
-          <Section id="writing" title={t.sections.writing}>
-            <div className="space-y-4">
-              {posts.map((post) => (
-                <PostCard key={post.url} post={post} lang={lang} />
-              ))}
-            </div>
-          </Section>
-        )}
-
-        <Section id="education" title={t.sections.education}>
-          <div className="space-y-10">
-            {t.education.map((entry) => (
-              <JourneyEntry
-                key={`${entry.title}-${entry.role}`}
-                slug={entry.slug}
-                subject={entry.title}
-                blurb={entry.blurb}
-                site={entry.site}
-                role={entry.role}
-                period={entry.period}
-                bullets={entry.bullets}
-              />
-            ))}
-          </div>
-        </Section>
-
-        <Section id="skills" title={t.sections.skills}>
-          <div className="space-y-6">
-            {t.skills.map((group) => (
-              <div key={group.label}>
-                <h3 className="mb-2.5 text-xs font-medium text-muted">{group.label}</h3>
-                <ChipGrid items={group.items} />
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        <Section id="certifications" title={t.sections.certifications}>
-          <ChipGrid items={t.certifications} />
-        </Section>
-
-        <Section title={t.sections.contact}>
-          <ContactFooter
-            prompt={t.contactPrompt}
-            location={t.location}
-            status={t.status}
-            name={t.name}
-          />
-        </Section>
+      <div className="mt-12 max-w-[58ch] space-y-5 text-base leading-[1.7] text-ink-soft">
+        {t.about.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+        <p>
+          {t.aboutLast.before}
+          <a href={`mailto:${contact.email}`} className="hl text-ink">
+            {t.aboutLast.link}
+          </a>
+          {t.aboutLast.after}
+        </p>
       </div>
-    </main>
+
+      <div className="mt-16 grid grid-cols-2 gap-x-8 gap-y-10">
+        <EntryList label={t.lists.work} entries={of("work")} />
+        <EntryList label={t.lists.school} entries={of("school")} />
+      </div>
+
+      <section className="mt-12">
+        <h2 className="text-sm text-muted">{t.lists.reading}</h2>
+        <ul className="mt-3 space-y-2.5">
+          {t.reads.map((book) => (
+            <li key={book.title} className="flex items-center gap-3 text-base">
+              <img
+                src={book.cover}
+                alt=""
+                width={14}
+                height={21}
+                loading="lazy"
+                className="h-[21px] w-[14px] shrink-0 rounded-[2px] object-cover ring-1 ring-rule"
+              />
+              <a href={book.url} target="_blank" rel="noreferrer" className="hl min-w-0 text-ink">
+                {book.title}
+              </a>
+              <span className="ml-auto shrink-0 pl-3 text-sm text-muted">{book.author}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {posts.length > 0 && (
+        <section className="mt-12">
+          <h2 className="text-sm text-muted">{t.lists.writing}</h2>
+          <ul className="mt-3 space-y-2.5">
+            {posts.map((post) => (
+              <li key={post.url} className="flex items-baseline justify-between gap-6 text-base">
+                <a href={post.url} target="_blank" rel="noreferrer" className="hl text-ink">
+                  {post.title}
+                </a>
+                {post.date && (
+                  <span className="shrink-0 text-sm text-muted tabular-nums">
+                    {new Date(post.date).toLocaleDateString(lang === "pt" ? "pt-BR" : "en", {
+                      month: "short",
+                      year: "numeric",
+                      timeZone: "UTC",
+                    })}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+          <a
+            href={contact.medium}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-4 inline-block text-sm text-muted transition-colors hover:text-ink"
+          >
+            {t.allWriting}
+          </a>
+        </section>
+      )}
+    </Page>
+  );
+}
+
+function EntryList({ label, entries }: { label: string; entries: Entry[] }) {
+  return (
+    <section>
+      <h2 className="text-sm text-muted">{label}</h2>
+      <ul className="mt-3 space-y-2">
+        {entries.map((entry) => (
+          <li key={entry.slug} className="flex items-center gap-2.5">
+            <img
+              src={`/logos/${entry.slug}.png`}
+              alt=""
+              width={20}
+              height={20}
+              className="size-5 shrink-0 rounded-[5px] border border-rule bg-white object-cover"
+            />
+            <Link to="/$slug" params={{ slug: entry.slug }} className="hl text-base text-ink">
+              {entry.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
