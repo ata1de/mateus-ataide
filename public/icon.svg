@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- "Ma" in monoline strokes over a highlighter swipe, on the site's paper. -->
+  <rect width="64" height="64" rx="15" fill="#f6f6f4"/>
+  <path d="M9 41.5 L56 37.5" stroke="#ffec3d" stroke-width="15" stroke-linecap="round" fill="none"/>
+  <g fill="none" stroke="#191918" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 46 V19 L21.5 34 L32 19 V46"/>
+    <circle cx="44.5" cy="37.5" r="8.5"/>
+    <path d="M53 29 V46"/>
+  </g>
+</svg>
